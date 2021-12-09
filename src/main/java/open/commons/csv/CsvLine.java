@@ -34,7 +34,7 @@ import javax.validation.constraints.Min;
  * CSV 파일 줄 데이터
  * 
  * @since 2021. 8. 13.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class CsvLine {
@@ -59,7 +59,7 @@ public class CsvLine {
      * @param lineNumber
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CsvLine(@Min(1) Integer lineNumber) {
@@ -79,7 +79,7 @@ public class CsvLine {
      * @return the data
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #data
@@ -102,7 +102,7 @@ public class CsvLine {
      * @return the lineNumber
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lineNumber
@@ -126,7 +126,7 @@ public class CsvLine {
      *            the data to set
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #data
@@ -149,7 +149,7 @@ public class CsvLine {
      *            the lineNumber to set
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lineNumber
@@ -161,7 +161,7 @@ public class CsvLine {
     /**
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()

@@ -38,7 +38,7 @@ import open.commons.utils.ExceptionUtils;
 /**
  * 
  * @since 2021. 8. 11.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class CsvLines {
@@ -69,7 +69,7 @@ public class CsvLines {
      * @param headers
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CsvLines(@NotNull @NotEmpty CsvHeader[] headers) {
@@ -93,7 +93,7 @@ public class CsvLines {
      *             입력받은 데이터 길이가 컬럼개수와 다른 경우.
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void addData(CsvLine line) throws IllegalArgumentException {
@@ -121,7 +121,7 @@ public class CsvLines {
      * @return the dataLength
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #dataLength
@@ -144,7 +144,7 @@ public class CsvLines {
      * @return the headers
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #headers
@@ -167,7 +167,7 @@ public class CsvLines {
      * @return the lines
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lines
@@ -190,7 +190,7 @@ public class CsvLines {
      * @return the totalSize
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #totalSize
@@ -214,7 +214,7 @@ public class CsvLines {
      *            the lines to set
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lines
@@ -237,7 +237,7 @@ public class CsvLines {
      *            the totalSize to set
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #totalSize
@@ -249,7 +249,7 @@ public class CsvLines {
     /**
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()

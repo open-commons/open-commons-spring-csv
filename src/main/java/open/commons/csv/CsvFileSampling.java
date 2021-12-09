@@ -39,7 +39,7 @@ import open.commons.utils.ArrayUtils;
  * CSV 파일의 일부만 제공하는 클래스.
  * 
  * @since 2021. 8. 13.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class CsvFileSampling extends AbstractCsvFileLoad {
@@ -61,7 +61,7 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * @param lineNumber
      * 
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CsvFileSampling(@NotNull String filepath) {
@@ -82,7 +82,7 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      *
      * @since 2021. 8. 13.
      * 
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void addData(Object[] data) {
@@ -143,7 +143,7 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
 
     /**
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
@@ -174,7 +174,7 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * @param data
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private Object[] updateColumnDataType(Object[] data) {

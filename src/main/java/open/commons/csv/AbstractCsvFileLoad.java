@@ -38,7 +38,7 @@ import open.commons.utils.ExceptionUtils;
 /**
  * 
  * @since 2021. 12. 8.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public abstract class AbstractCsvFileLoad {
@@ -69,7 +69,7 @@ public abstract class AbstractCsvFileLoad {
      * @param filepath
      *            파일 경로
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public AbstractCsvFileLoad(@NotNull String filepath) {
@@ -89,7 +89,7 @@ public abstract class AbstractCsvFileLoad {
      * @param headers
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void addHeaders(String... headers) {
@@ -114,7 +114,7 @@ public abstract class AbstractCsvFileLoad {
      * @return the csvcolumndatatype
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #csvcolumndatatype
@@ -137,7 +137,7 @@ public abstract class AbstractCsvFileLoad {
      * @return the filepath
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #filepath
@@ -160,7 +160,7 @@ public abstract class AbstractCsvFileLoad {
      * @return the headers
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
@@ -183,7 +183,7 @@ public abstract class AbstractCsvFileLoad {
      *            the headers to set
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
@@ -206,7 +206,7 @@ public abstract class AbstractCsvFileLoad {
      *            한줄에 포함된 데이터 개수
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void setHeaders(int count) {
@@ -230,7 +230,7 @@ public abstract class AbstractCsvFileLoad {
      *            the headers to set
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
@@ -256,7 +256,7 @@ public abstract class AbstractCsvFileLoad {
      *            the headers to set
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
@@ -270,7 +270,7 @@ public abstract class AbstractCsvFileLoad {
 
     /**
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()

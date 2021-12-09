@@ -48,7 +48,7 @@ import au.com.bytecode.opencsv.ResultSetHelperService;
  * {@link au.com.bytecode.opencsv.CSVWriter}의 코드를 그대로 사용하였으며, CSV 헤더 데이터 부분만 추가하였습.
  * 
  * @since 2021. 8. 17.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  * 
  * @see au.com.bytecode.opencsv.CSVWriter
@@ -109,7 +109,7 @@ public class CSVWriter implements Closeable {
      *            the writer to an underlying CSV source.
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer) {
@@ -132,7 +132,7 @@ public class CSVWriter implements Closeable {
      *            the delimiter to use for separating entries.
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator) {
@@ -157,7 +157,7 @@ public class CSVWriter implements Closeable {
      *            the character to use for quoted elements
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar) {
@@ -184,7 +184,7 @@ public class CSVWriter implements Closeable {
      *            the character to use for escaping quotechars or escapechars
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, char escapechar) {
@@ -212,7 +212,7 @@ public class CSVWriter implements Closeable {
      * @param headers
      *            CSV 헤더
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, char escapechar, CsvHeader[] headers) {
@@ -242,7 +242,7 @@ public class CSVWriter implements Closeable {
      *            the line feed terminator to use
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, char escapechar, String lineEnd) {
@@ -272,7 +272,7 @@ public class CSVWriter implements Closeable {
      * @param headers
      *            CSV 헤더 정보
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, char escapechar, String lineEnd, final CsvHeader[] headers) {
@@ -316,7 +316,7 @@ public class CSVWriter implements Closeable {
      * @param headers
      *            CSV 헤더
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, CsvHeader[] headers) {
@@ -344,7 +344,7 @@ public class CSVWriter implements Closeable {
      *            the line feed terminator to use
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, String lineEnd) {
@@ -372,7 +372,7 @@ public class CSVWriter implements Closeable {
      * @param headers
      *            CSV 헤더
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, String lineEnd, CsvHeader[] headers) {
@@ -396,7 +396,7 @@ public class CSVWriter implements Closeable {
      * @param headers
      *            CSV 헤더
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, CsvHeader[] headers) {
@@ -418,7 +418,7 @@ public class CSVWriter implements Closeable {
      * @param headers
      *            CSV 헤더
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, CsvHeader[] headers) {
@@ -438,7 +438,7 @@ public class CSVWriter implements Closeable {
      * @return
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public boolean checkError() {
@@ -459,7 +459,7 @@ public class CSVWriter implements Closeable {
      *             if bad things happen
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see java.io.Closeable#close()
@@ -484,7 +484,7 @@ public class CSVWriter implements Closeable {
      *             if bad things happen
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void flush() throws IOException {
@@ -506,7 +506,7 @@ public class CSVWriter implements Closeable {
      * @return
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     protected StringBuilder processLine(String nextElement) {
@@ -539,7 +539,7 @@ public class CSVWriter implements Closeable {
      * @param resultService
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void setResultService(ResultSetHelper resultService) {
@@ -561,7 +561,7 @@ public class CSVWriter implements Closeable {
      * @return
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private boolean stringContainsSpecialCharacters(String line) {
@@ -592,7 +592,7 @@ public class CSVWriter implements Closeable {
      *             thrown by getColumnValue
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void writeAll(java.sql.ResultSet rs, boolean includeColumnNames) throws SQLException, IOException {
@@ -621,7 +621,7 @@ public class CSVWriter implements Closeable {
      *            a List of String[], with each String[] representing a line of the file.
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void writeAll(List<String[]> allLines) {
@@ -645,7 +645,7 @@ public class CSVWriter implements Closeable {
      * @throws SQLException
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     protected void writeColumnNames(ResultSet rs) throws SQLException {
@@ -664,7 +664,7 @@ public class CSVWriter implements Closeable {
      *
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void writeHeader() {
@@ -699,7 +699,7 @@ public class CSVWriter implements Closeable {
      *            a string array with each comma-separated element as a separate entry.
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void writeNext(String[] nextLine) {

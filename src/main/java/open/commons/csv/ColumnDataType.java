@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * CSV 컬럼 데이터 타입
  * 
  * @since 2021. 8. 13.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 @RequestValueSupported

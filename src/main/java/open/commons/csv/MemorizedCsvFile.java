@@ -64,7 +64,7 @@ import open.commons.utils.ExceptionUtils;
 /**
  * 
  * @since 2021. 8. 12.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class MemorizedCsvFile {
@@ -124,7 +124,7 @@ public class MemorizedCsvFile {
      * @param filepath
      *            CSV 파일 경로
      * @since 2021. 8. 12.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public MemorizedCsvFile(String uuid, CsvFileConfig csvFileConfig, CsvHeader[] headers, boolean hasHeader, String filepath) {
@@ -154,7 +154,7 @@ public class MemorizedCsvFile {
      * @return millisecond.
      *
      * @since 2021. 8. 14.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public long afterAccessed() {
@@ -176,7 +176,7 @@ public class MemorizedCsvFile {
      * @return millisecond.
      *
      * @since 2021. 8. 14.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public long afterCreated() {
@@ -196,7 +196,7 @@ public class MemorizedCsvFile {
      * @return millisecond.
      *
      * @since 2021. 8. 14.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public long afterModified() {
@@ -222,7 +222,7 @@ public class MemorizedCsvFile {
      *            예외상황 클래스.
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private <X extends RuntimeException> void assertDataLength(Object[] line, Class<X> exType) {
@@ -254,7 +254,7 @@ public class MemorizedCsvFile {
      * @throws BadRequestException
      *             줄 번호가 올바르지 않은 경우
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private <X extends RuntimeException> void assertLineNumber(int index, Class<X> exType, String exMessage) throws BadRequestException {
@@ -279,7 +279,7 @@ public class MemorizedCsvFile {
      * @return
      *
      * @since 2021. 8. 16.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> delete(@Min(1) Integer lineNumber) {
@@ -309,7 +309,7 @@ public class MemorizedCsvFile {
      * @param readline
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private Object[] deserialize(int lineNumber, String[] readline) {
@@ -426,7 +426,7 @@ public class MemorizedCsvFile {
      * @return
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private boolean filter(Double colData, ColumnOp op, Object condValue) {
@@ -478,7 +478,7 @@ public class MemorizedCsvFile {
      * @return
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private boolean filter(Long colData, ColumnOp op, Object condValue) {
@@ -530,7 +530,7 @@ public class MemorizedCsvFile {
      * @return
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private boolean filter(String colData, ColumnOp op, Object condValue) {
@@ -582,7 +582,7 @@ public class MemorizedCsvFile {
      * @return
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private List<IndexedObject> get0(ColumnSort sort, @NotNull Collection<ColumnCondition> conditions) {
@@ -607,7 +607,7 @@ public class MemorizedCsvFile {
      * @return the accessed
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #accessed
@@ -630,7 +630,7 @@ public class MemorizedCsvFile {
      * @return the created
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #created
@@ -653,7 +653,7 @@ public class MemorizedCsvFile {
      * @return the csvFileConfig
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #csvFileConfig
@@ -676,7 +676,7 @@ public class MemorizedCsvFile {
      * @return the filepath
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #filepath
@@ -699,7 +699,7 @@ public class MemorizedCsvFile {
      * @return the hasHeader
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #hasHeader
@@ -722,7 +722,7 @@ public class MemorizedCsvFile {
      * @return the headers
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
@@ -745,7 +745,7 @@ public class MemorizedCsvFile {
      * @return the modified
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #modified
@@ -767,7 +767,7 @@ public class MemorizedCsvFile {
      * @return
      *
      * @since 2021. 8. 16.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public int getSize() {
@@ -790,7 +790,7 @@ public class MemorizedCsvFile {
      * @return the uuid
      *
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #uuid
@@ -821,7 +821,7 @@ public class MemorizedCsvFile {
      *             줄 번호가 올바르지 않은 경우.
      *
      * @since 2021. 8. 16.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> insertData(@NotNull @Min(1) Integer lineNumber, @NotNull PositionDir position, @NotEmpty Object[] data) throws BadRequestException {
@@ -870,7 +870,7 @@ public class MemorizedCsvFile {
      *             헤더 타입과 실제 데이터가 일치하지 않는 경우.
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void loadLineData(@Min(1) Integer lineNumber, @NotEmpty String[] readline) throws BadRequestException {
@@ -902,7 +902,7 @@ public class MemorizedCsvFile {
      *             줄 번호가 올바르지 않은 경우
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ManagedCsvFile read(@Min(1) Integer lineNumber, @Min(1) Integer count) throws BadRequestException {
@@ -957,7 +957,7 @@ public class MemorizedCsvFile {
      *             줄 번호가 올바르지 않은 경우
      *
      * @since 2021. 8. 16.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ManagedCsvFile search(ColumnSort sort, @NotNull final Collection<ColumnCondition> conditions, Pageable pageable) throws BadRequestException {
@@ -1035,7 +1035,7 @@ public class MemorizedCsvFile {
      * @return
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see 이 함수를 호출하는 곳에서 반드시 {@link #mutexLines}에 대해 synchroized 설정을 해야 한다.
@@ -1096,7 +1096,7 @@ public class MemorizedCsvFile {
      * @return
      *
      * @since 2021. 8. 16.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private String[] serialize(int lineNumber, Object[] data) {
@@ -1155,7 +1155,7 @@ public class MemorizedCsvFile {
      *            the accessed to set
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #accessed
@@ -1178,7 +1178,7 @@ public class MemorizedCsvFile {
      *            the modified to set
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #modified
@@ -1201,7 +1201,7 @@ public class MemorizedCsvFile {
      * @param sorter
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
@@ -1216,7 +1216,7 @@ public class MemorizedCsvFile {
 
     /**
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
@@ -1295,7 +1295,7 @@ public class MemorizedCsvFile {
      *            데이터 수정 여부.
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private void updateTimestamp(boolean isModified) {
@@ -1514,7 +1514,7 @@ public class MemorizedCsvFile {
          * @param header
          * @param sort
          * @since 2021. 8. 15.
-         * @version _._._
+         * @version 0.1.0
          * @author Park Jun-Hong (parkjunhong77@gmail.com)
          */
         public Sorter(CsvHeader header, ColumnSort sort) {
@@ -1526,7 +1526,7 @@ public class MemorizedCsvFile {
 
         /**
          * @since 2021. 8. 15.
-         * @version _._._
+         * @version 0.1.0
          * @author Park Jun-Hong (parkjunhong77@gmail.com)
          *
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
@@ -1578,7 +1578,7 @@ public class MemorizedCsvFile {
          * @return the header
          *
          * @since 2021. 8. 15.
-         * @version _._._
+         * @version 0.1.0
          * @author Park Jun-Hong (parkjunhong77@gmail.com)
          * 
          * @see #header
@@ -1601,7 +1601,7 @@ public class MemorizedCsvFile {
          * @return the index
          *
          * @since 2021. 8. 15.
-         * @version _._._
+         * @version 0.1.0
          * @author Park Jun-Hong (parkjunhong77@gmail.com)
          * 
          * @see #index
@@ -1624,7 +1624,7 @@ public class MemorizedCsvFile {
          * @return the orderBy
          *
          * @since 2021. 8. 15.
-         * @version _._._
+         * @version 0.1.0
          * @author Park Jun-Hong (parkjunhong77@gmail.com)
          * 
          * @see #orderBy

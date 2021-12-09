@@ -35,7 +35,7 @@ import javax.validation.constraints.NotNull;
  * 같음(=), 다름(!=), 비교(?=, 자바 정규식을 기반)을 제공한다.
  * 
  * @since 2021. 8. 10.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class ColumnCondition {
@@ -64,7 +64,7 @@ public class ColumnCondition {
      *
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ColumnCondition() {
@@ -83,7 +83,7 @@ public class ColumnCondition {
      * @return the data
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #data
@@ -106,7 +106,7 @@ public class ColumnCondition {
      * @return the index
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #index
@@ -129,7 +129,7 @@ public class ColumnCondition {
      * @return the op
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #op
@@ -153,7 +153,7 @@ public class ColumnCondition {
      *            the data to set
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #data
@@ -176,7 +176,7 @@ public class ColumnCondition {
      *            the index to set
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #index
@@ -199,7 +199,7 @@ public class ColumnCondition {
      *            the op to set
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #op
@@ -211,7 +211,7 @@ public class ColumnCondition {
     /**
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()

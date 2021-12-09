@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * 
  * @since 2021. 8. 15.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 @RequestValueSupported

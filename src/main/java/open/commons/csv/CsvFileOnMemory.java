@@ -35,7 +35,7 @@ import javax.validation.constraints.NotNull;
  * CSV 파일을 메모리에 로딩한 결과 클래스.
  * 
  * @since 2021. 12. 8.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class CsvFileOnMemory extends AbstractCsvFileLoad {
@@ -60,7 +60,7 @@ public class CsvFileOnMemory extends AbstractCsvFileLoad {
      *            줄 수
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CsvFileOnMemory(@NotNull String filepath, @Min(0) int lineCount) {
@@ -82,7 +82,7 @@ public class CsvFileOnMemory extends AbstractCsvFileLoad {
      * @return the lineCount
      *
      * @since 2021. 8. 10.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #lineCount
@@ -93,7 +93,7 @@ public class CsvFileOnMemory extends AbstractCsvFileLoad {
 
     /**
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()

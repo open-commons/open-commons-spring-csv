@@ -30,7 +30,7 @@ package open.commons.csv;
  * CSV 헤더 정보 클래스.
  * 
  * @since 2021. 8. 13.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class CsvHeader {
@@ -53,7 +53,7 @@ public class CsvHeader {
      * @param header
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CsvHeader(String header) {
@@ -74,7 +74,7 @@ public class CsvHeader {
      * @param dataType
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CsvHeader(String header, ColumnDataType dataType) {
@@ -95,7 +95,7 @@ public class CsvHeader {
      * @return the dataType
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #dataType
@@ -118,7 +118,7 @@ public class CsvHeader {
      * @return the header
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #header
@@ -142,7 +142,7 @@ public class CsvHeader {
      *            the dataType to set
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #dataType
@@ -154,7 +154,7 @@ public class CsvHeader {
     /**
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()

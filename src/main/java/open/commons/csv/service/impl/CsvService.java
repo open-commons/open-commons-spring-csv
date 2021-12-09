@@ -108,7 +108,7 @@ import au.com.bytecode.opencsv.CSVReader;
  * </ul>
  * 
  * @since 2021. 8. 12.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class CsvService extends AbstractGenericService implements ICsvService, IAsyncJobHandler {
@@ -195,7 +195,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 16.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#delete(java.lang.String, int)
@@ -213,7 +213,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 12.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.mvc.IAsyncJobHandler#getAsyncManagerHolder()
@@ -236,7 +236,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#getManagedFiles()
@@ -250,7 +250,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 16.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#insert(java.lang.String, int,
@@ -269,7 +269,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 12.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#load(String, open.commons.csv.CsvFileConfig, CsvHeader[],
@@ -327,7 +327,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#read(java.lang.String, java.lang.Integer,
@@ -350,7 +350,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#release(java.lang.String)
@@ -362,7 +362,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 17.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#reload(java.lang.String, String)
@@ -385,7 +385,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#sample(open.commons.csv.CsvFileConfig, java.lang.String,
@@ -447,7 +447,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 16.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#search(java.lang.String, java.util.List,
@@ -483,7 +483,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#update(java.lang.String, int, Object[])
@@ -512,7 +512,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      *
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @Scheduled(cron = "${application.csv.ttl.cron}")
@@ -536,7 +536,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
 
     /**
      * @since 2021. 8. 16.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#write(java.lang.String, java.lang.String)
@@ -587,7 +587,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @return
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static Result<Boolean> registerManagedCsvFile(String uuid, String filepath, MemorizedCsvFile managedCsvFile, boolean reload) {
@@ -625,7 +625,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @return
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static Result<Boolean> unregisterManagedCsvFile(String uuid) {
@@ -667,7 +667,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @param reload
      *            다시읽기 여부
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static void validateCsvFile(String uuid, String filepath, boolean reload) {

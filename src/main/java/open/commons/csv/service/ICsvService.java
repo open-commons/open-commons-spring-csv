@@ -47,7 +47,7 @@ import open.commons.csv.ManagedCsvFile;
  * CSV 파일 관련 기능을 정의.
  * 
  * @since 2021. 12. 8.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public interface ICsvService {

@@ -40,7 +40,7 @@ import open.commons.csv.CsvHeader;
 /**
  * 
  * @since 2021. 8. 11.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class CommonsUtils {
@@ -63,7 +63,7 @@ public class CommonsUtils {
      * @return
      *
      * @since 2021. 8. 12.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public static CsvHeader[] csvHeaderArray(int count) {
@@ -87,7 +87,7 @@ public class CommonsUtils {
      * @return
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public static List<CsvHeader> csvHeaderList(int count) {
@@ -108,7 +108,7 @@ public class CommonsUtils {
      * @return
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public static CsvHeader[] csvHeaders(@NotNull List<String> headers) {
@@ -129,7 +129,7 @@ public class CommonsUtils {
      * @return
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public static CsvHeader[] csvHeaders(@NotNull String... headers) {
@@ -151,7 +151,7 @@ public class CommonsUtils {
      * @return
      *
      * @since 2021. 8. 11.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static List<String> intToStrList(int count) {
@@ -173,7 +173,7 @@ public class CommonsUtils {
      * @return
      *
      * @since 2021. 8. 13.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * @see UUID
      */

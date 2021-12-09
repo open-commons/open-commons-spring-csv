@@ -35,7 +35,7 @@ import org.springframework.data.domain.Pageable;
  * CSV 파일에서 읽은 데이터 정보.
  * 
  * @since 2021. 8. 15.
- * @version _._._
+ * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 public class ManagedCsvFile {
@@ -69,7 +69,7 @@ public class ManagedCsvFile {
      *            CSV 파일 데이터
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ManagedCsvFile(String filepath, CsvLines lines) {
@@ -91,7 +91,7 @@ public class ManagedCsvFile {
      * @return the filepath
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #filepath
@@ -114,7 +114,7 @@ public class ManagedCsvFile {
      * @return the lines
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lines
@@ -137,7 +137,7 @@ public class ManagedCsvFile {
      * @return the pageable
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #pageable
@@ -160,7 +160,7 @@ public class ManagedCsvFile {
      * @return 메모리에서 자동 해제될 시간. 단위: ms (millisecond)
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #releaseTime
@@ -183,7 +183,7 @@ public class ManagedCsvFile {
      * @return the totalSize
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #totalSize
@@ -207,7 +207,7 @@ public class ManagedCsvFile {
      *            the pageable to set
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #pageable
@@ -230,7 +230,7 @@ public class ManagedCsvFile {
      *            메모리에서 자동 해제될 시간. 단위: ms (millisecond)
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #releaseTime
@@ -253,7 +253,7 @@ public class ManagedCsvFile {
      *            the totalSize to set
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #totalSize
@@ -265,7 +265,7 @@ public class ManagedCsvFile {
     /**
      *
      * @since 2021. 8. 15.
-     * @version _._._
+     * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
