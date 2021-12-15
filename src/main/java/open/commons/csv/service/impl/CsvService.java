@@ -198,7 +198,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#delete(java.lang.String, int)
+     * @see open.commons.csv.service.ICsvService#delete(java.lang.String, int)
      */
     @Override
     public Result<Boolean> delete(@NotEmpty String uuid, @Min(1) int lineNumber) {
@@ -239,7 +239,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#getManagedFiles()
+     * @see open.commons.csv.service.ICsvService#getManagedFiles()
      */
     @Override
     public Result<Set<String>> getManagedFiles() {
@@ -253,8 +253,8 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#insert(java.lang.String, int,
-     *      kr.re.etri.dt.fileservice.service.v1.PositionDir, java.lang.Object[])
+     * @see open.commons.csv.service.ICsvService#insert(java.lang.String, int,
+     *      open.commons.csv.service.PositionDir, java.lang.Object[])
      */
     @Override
     public Result<Boolean> insert(@NotEmpty String uuid, @Min(1) int lineNumber, @NotNull PositionDir position, @NotEmpty Object[] data) {
@@ -272,7 +272,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#load(String, open.commons.csv.CsvFileConfig, CsvHeader[],
+     * @see open.commons.csv.service.ICsvService#load(String, open.commons.csv.CsvFileConfig, CsvHeader[],
      *      boolean, java.lang.String, boolean)
      */
     @Override
@@ -330,7 +330,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#read(java.lang.String, java.lang.Integer,
+     * @see open.commons.csv.service.ICsvService#read(java.lang.String, java.lang.Integer,
      *      java.lang.Integer)
      */
     @Override
@@ -353,7 +353,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#release(java.lang.String)
+     * @see open.commons.csv.service.ICsvService#release(java.lang.String)
      */
     @Override
     public Result<Boolean> release(@NotEmpty String uuid) {
@@ -365,7 +365,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#reload(java.lang.String, String)
+     * @see open.commons.csv.service.ICsvService#reload(java.lang.String, String)
      */
     @Override
     public Result<CsvFileOnMemory> reload(@NotEmpty String uuid, String filepath) {
@@ -388,7 +388,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#sample(open.commons.csv.CsvFileConfig, java.lang.String,
+     * @see open.commons.csv.service.ICsvService#sample(open.commons.csv.CsvFileConfig, java.lang.String,
      *      int)
      */
     @Override
@@ -450,7 +450,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#search(java.lang.String, java.util.List,
+     * @see open.commons.csv.service.ICsvService#search(java.lang.String, java.util.List,
      *      org.springframework.data.domain.Pageable)
      */
     @Override
@@ -486,7 +486,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#update(java.lang.String, int, Object[])
+     * @see open.commons.csv.service.ICsvService#update(java.lang.String, int, Object[])
      */
     @Override
     public Result<Boolean> update(@NotEmpty String uuid, @Min(1) int lineNumber, @NotEmpty Object[] data) {
@@ -539,7 +539,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see kr.re.etri.dt.fileservice.service.v1.ICsvService#write(java.lang.String, java.lang.String)
+     * @see open.commons.csv.service.ICsvService#write(java.lang.String, java.lang.String)
      */
     @Override
     public Result<Boolean> write(@NotEmpty String uuid, String filepath) {
