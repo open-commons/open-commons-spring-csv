@@ -35,6 +35,8 @@ import open.commons.csv.utils.CommonsUtils;
 import open.commons.spring.web.servlet.InternalServerException;
 import open.commons.utils.ExceptionUtils;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 /**
  * 
  * @since 2021. 12. 8.
@@ -188,6 +190,7 @@ public abstract class AbstractCsvFileLoad {
      * 
      * @see #headers
      */
+    @JsonSetter
     public void setHeaders(CsvHeader[] headers) {
         this.headers = headers;
     }
