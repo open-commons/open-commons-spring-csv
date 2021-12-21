@@ -27,6 +27,7 @@
 package open.commons.csv;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * CSV 헤더 정보 클래스.
@@ -58,7 +59,7 @@ public class CsvHeader {
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public CsvHeader(String header) {
+    public CsvHeader(@JsonProperty("header") String header) {
         this(header, ColumnDataType.GENERAL);
     }
 
@@ -80,7 +81,7 @@ public class CsvHeader {
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @JsonCreator
-    public CsvHeader(String header, ColumnDataType dataType) {
+    public CsvHeader(@JsonProperty("header") String header, @JsonProperty("dataType") ColumnDataType dataType) {
         this.header = header;
         this.dataType = dataType;
     }
