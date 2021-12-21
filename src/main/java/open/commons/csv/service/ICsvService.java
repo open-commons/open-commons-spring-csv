@@ -70,7 +70,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> delete(@NotEmpty String uuid, @Min(1) int lineNumber);
 
@@ -87,7 +87,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<Set<String>> getManagedFiles();
 
@@ -114,7 +114,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> insert(@NotEmpty String uuid, @Min(1) int lineNumber, @NotNull PositionDir position, @NotEmpty Object[] data);
 
@@ -143,7 +143,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 12.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<CsvFileOnMemory> load(@NotEmpty String uuid, @NotNull CsvFileConfig config, @NotEmpty CsvHeader[] headers, boolean hasHeader, @NotNull String filepath,
             boolean reload);
@@ -167,7 +167,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<ManagedCsvFile> read(@NotEmpty String uuid, @Min(1) Integer lineNumber, @Min(1) Integer count);
 
@@ -186,7 +186,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> release(@NotEmpty String uuid);
 
@@ -207,7 +207,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 17.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<CsvFileOnMemory> reload(@NotEmpty String uuid, @NotEmpty String filepath);
 
@@ -230,7 +230,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 13.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<CsvFileSampling> sample(@NotNull CsvFileConfig config, @NotNull String filepath, int count);
 
@@ -254,7 +254,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<ManagedCsvFile> search(@NotEmpty String uuid, List<ColumnCondition> conditions, @NotNull Pageable pageable);
 
@@ -277,7 +277,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> update(@NotEmpty String uuid, @Min(1) int lineNumber, @NotEmpty Object[] data);
 
@@ -298,7 +298,7 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> write(@NotEmpty String uuid, String filepath);
 }
