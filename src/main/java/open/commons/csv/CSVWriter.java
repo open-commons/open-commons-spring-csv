@@ -45,7 +45,7 @@ import au.com.bytecode.opencsv.ResultSetHelperService;
  * CSV 컬럼 데이터 타입에 따라 Quotes 사용 여부를 결정한다.
  * 
  * <br>
- * {@link au.com.bytecode.opencsv.CSVWriter}의 코드를 그대로 사용하였으며, CSV 헤더 데이터 부분만 추가하였습.
+ * {@link au.com.bytecode.opencsv.CSVWriter}의 코드를 그대로 사용하였으며, CSV 헤더 데이터 부분만 추가하였습니다.
  * 
  * @since 2021. 8. 17.
  * @version 0.1.0
