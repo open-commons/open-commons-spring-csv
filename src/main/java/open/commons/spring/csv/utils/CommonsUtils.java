@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.csv.utils;
+package open.commons.spring.csv.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +35,7 @@ import java.util.stream.IntStream;
 
 import javax.validation.constraints.NotNull;
 
-import open.commons.csv.CsvHeader;
+import open.commons.spring.csv.CsvHeader;
 
 /**
  * 

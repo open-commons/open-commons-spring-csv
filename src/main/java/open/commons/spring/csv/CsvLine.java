@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.csv;
+package open.commons.spring.csv;
 
 import java.util.Arrays;
 

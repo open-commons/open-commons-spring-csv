@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.csv;
+package open.commons.spring.csv;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +33,7 @@ import java.util.Map.Entry;
 
 import javax.validation.constraints.NotNull;
 
-import open.commons.utils.ArrayUtils;
+import open.commons.core.utils.ArrayUtils;
 
 /**
  * CSV 파일의 일부만 제공하는 클래스.

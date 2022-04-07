@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.csv;
+package open.commons.spring.csv;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;

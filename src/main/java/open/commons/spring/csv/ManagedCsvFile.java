@@ -18,44 +18,41 @@
  *
  * This file is generated under this project, "open-commons-csv".
  *
- * Date  : 2021. 8. 11. 오후 5:46:02
+ * Date  : 2021. 8. 15. 오후 5:55:51
  *
  * Author: Park Jun-Hong (parkjunhong77@gmail.com)
  * 
  */
 
-package open.commons.csv;
+package open.commons.spring.csv;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
-import open.commons.utils.ExceptionUtils;
+import org.springframework.data.domain.Pageable;
 
 /**
+ * CSV 파일에서 읽은 데이터 정보.
  * 
- * @since 2021. 8. 11.
+ * @since 2021. 8. 15.
  * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-public class CsvLines {
+public class ManagedCsvFile {
 
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+
+    /** CSV 파일 경로 */
+    private final String filepath;
+    /** CSV 파일 데이터 */
+    private final CsvLines lines;
+    /** 메모리에서 자동 해제될 시간. 단위: ms (millisecond) */
+    private long releaseTime;
+    /** 페이지 정보 */
+    private Pageable pageable;
+    /** 원본 데이터 전체 크기 */
     private int totalSize;
 
-    /** CSV 데이터 헤더 */
-    @NotNull
-    @NotEmpty
-    private final CsvHeader[] headers;
-
-    /** 줄 데이터 개수 */
-    private final int dataLength;
-
-    /** CSV 데이터 */
-    private List<CsvLine> lines = new ArrayList<>();
-
     /**
      * <br>
      * 
@@ -63,49 +60,22 @@ public class CsvLines {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 11.		박준홍			최초 작성
+     * 2021. 8. 15.		박준홍			최초 작성
      * </pre>
      *
-     * @param headers
+     * @param filepath
+     *            CSV 파일 경로
+     * @param lines
+     *            CSV 파일 데이터
      *
-     * @since 2021. 8. 11.
+     * @since 2021. 8. 15.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public CsvLines(@NotNull @NotEmpty CsvHeader[] headers) {
-        this.headers = headers;
-        this.dataLength = headers.length;
-    }
-
-    /**
-     * CSV 줄 데이터를 추가한다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2021. 8. 11.     박준홍         최초 작성
-     * </pre>
-     *
-     * @param line
-     *            줄 데이터.
-     * @throws IllegalArgumentException
-     *             입력받은 데이터 길이가 컬럼개수와 다른 경우.
-     *
-     * @since 2021. 8. 11.
-     * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
-     */
-    public void addData(CsvLine line) throws IllegalArgumentException {
-        if (line == null || line.getData() == null) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "데이터 올바르지 않습니다. 입력=%s", line);
-        }
-
-        if (this.dataLength != line.getData().length) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "데이터 길이가 올바르지 않습니다. 예상=%,d, 입력=%,d", this.dataLength, line.getData().length);
-        }
-
-        this.lines.add(line);
+    public ManagedCsvFile(String filepath, CsvLines lines) {
+        super();
+        this.filepath = filepath;
+        this.lines = lines;
     }
 
     /**
@@ -115,20 +85,20 @@ public class CsvLines {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 11.		박준홍			최초 작성
+     * 2021. 8. 15.		박준홍			최초 작성
      * </pre>
      * 
-     * @return the dataLength
+     * @return the filepath
      *
-     * @since 2021. 8. 11.
+     * @since 2021. 8. 15.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see #dataLength
+     * @see #filepath
      */
 
-    public int getDataLength() {
-        return dataLength;
+    public String getFilepath() {
+        return filepath;
     }
 
     /**
@@ -138,42 +108,19 @@ public class CsvLines {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 11.		박준홍			최초 작성
-     * </pre>
-     * 
-     * @return the headers
-     *
-     * @since 2021. 8. 11.
-     * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
-     *
-     * @see #headers
-     */
-
-    public CsvHeader[] getHeaders() {
-        return headers;
-    }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2021. 8. 11.		박준홍			최초 작성
+     * 2021. 8. 15.		박준홍			최초 작성
      * </pre>
      * 
      * @return the lines
      *
-     * @since 2021. 8. 11.
+     * @since 2021. 8. 15.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lines
      */
 
-    public List<CsvLine> getLines() {
+    public CsvLines getLines() {
         return lines;
     }
 
@@ -184,12 +131,58 @@ public class CsvLines {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 11.		박준홍			최초 작성
+     * 2021. 8. 15.		박준홍			최초 작성
+     * </pre>
+     * 
+     * @return the pageable
+     *
+     * @since 2021. 8. 15.
+     * @version 0.1.0
+     * @author Park Jun-Hong (parkjunhong77@gmail.com)
+     *
+     * @see #pageable
+     */
+
+    public Pageable getPageable() {
+        return pageable;
+    }
+
+    /**
+     * 자동해제될 시간을 제공한다.<br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 15.		박준홍			최초 작성
+     * </pre>
+     * 
+     * @return 메모리에서 자동 해제될 시간. 단위: ms (millisecond)
+     *
+     * @since 2021. 8. 15.
+     * @version 0.1.0
+     * @author Park Jun-Hong (parkjunhong77@gmail.com)
+     *
+     * @see #releaseTime
+     */
+
+    public long getReleaseTime() {
+        return releaseTime;
+    }
+
+    /**
+     * 전체 데이터 개수를 제공한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 15.		박준홍			최초 작성
      * </pre>
      * 
      * @return the totalSize
      *
-     * @since 2021. 8. 11.
+     * @since 2021. 8. 15.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
@@ -201,26 +194,49 @@ public class CsvLines {
     }
 
     /**
-     * <br>
+     * 페이지 정보를 설정한다.<br>
      * 
      * <pre>
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 11.		박준홍			최초 작성
+     * 2021. 8. 15.		박준홍			최초 작성
      * </pre>
      *
-     * @param lines
-     *            the lines to set
+     * @param pageable
+     *            the pageable to set
      *
-     * @since 2021. 8. 11.
+     * @since 2021. 8. 15.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see #lines
+     * @see #pageable
      */
-    public void setLines(List<CsvLine> lines) {
-        this.lines = lines;
+    public void setPageable(Pageable pageable) {
+        this.pageable = pageable;
+    }
+
+    /**
+     * 자동해제될 시간을 설정한다.<br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 15.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param releaseTime
+     *            메모리에서 자동 해제될 시간. 단위: ms (millisecond)
+     *
+     * @since 2021. 8. 15.
+     * @version 0.1.0
+     * @author Park Jun-Hong (parkjunhong77@gmail.com)
+     *
+     * @see #releaseTime
+     */
+    public void setReleaseTime(long releaseTime) {
+        this.releaseTime = releaseTime;
     }
 
     /**
@@ -230,13 +246,13 @@ public class CsvLines {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 11.		박준홍			최초 작성
+     * 2021. 8. 15.		박준홍			최초 작성
      * </pre>
      *
      * @param totalSize
      *            the totalSize to set
      *
-     * @since 2021. 8. 11.
+     * @since 2021. 8. 15.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
@@ -248,7 +264,7 @@ public class CsvLines {
 
     /**
      *
-     * @since 2021. 8. 11.
+     * @since 2021. 8. 15.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
@@ -257,16 +273,17 @@ public class CsvLines {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("CsvLines [totalSize=");
-        builder.append(totalSize);
-        builder.append(", headers=");
-        builder.append(Arrays.toString(headers));
-        builder.append(", dataLength=");
-        builder.append(dataLength);
+        builder.append("ManagedCsvFile [filepath=");
+        builder.append(filepath);
         builder.append(", lines=");
         builder.append(lines);
+        builder.append(", releaseTime=");
+        builder.append(DATE_FORMAT.format(new Date(releaseTime)));
+        builder.append(", pageable=");
+        builder.append(pageable);
+        builder.append(", totalSize=");
+        builder.append(totalSize);
         builder.append("]");
         return builder.toString();
     }
-
 }

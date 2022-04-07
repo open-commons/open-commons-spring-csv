@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.csv;
+package open.commons.spring.csv;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -52,14 +52,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import open.commons.Result;
-import open.commons.concurrent.Mutex;
-import open.commons.csv.service.PositionDir;
+import open.commons.core.Result;
+import open.commons.core.concurrent.Mutex;
+import open.commons.core.csv.CsvFileConfig;
+import open.commons.core.utils.ArrayUtils;
+import open.commons.core.utils.ComparableUtils;
+import open.commons.core.utils.ExceptionUtils;
+import open.commons.spring.csv.service.PositionDir;
 import open.commons.spring.web.servlet.BadRequestException;
 import open.commons.spring.web.servlet.InternalServerException;
-import open.commons.utils.ArrayUtils;
-import open.commons.utils.ComparableUtils;
-import open.commons.utils.ExceptionUtils;
 
 /**
  * 

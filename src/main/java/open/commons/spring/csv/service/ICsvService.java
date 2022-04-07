@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.csv.service;
+package open.commons.spring.csv.service;
 
 import java.util.List;
 import java.util.Set;
@@ -35,13 +35,13 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.data.domain.Pageable;
 
-import open.commons.Result;
-import open.commons.csv.ColumnCondition;
-import open.commons.csv.CsvFileConfig;
-import open.commons.csv.CsvFileOnMemory;
-import open.commons.csv.CsvFileSampling;
-import open.commons.csv.CsvHeader;
-import open.commons.csv.ManagedCsvFile;
+import open.commons.core.Result;
+import open.commons.core.csv.CsvFileConfig;
+import open.commons.spring.csv.ColumnCondition;
+import open.commons.spring.csv.CsvFileOnMemory;
+import open.commons.spring.csv.CsvFileSampling;
+import open.commons.spring.csv.CsvHeader;
+import open.commons.spring.csv.ManagedCsvFile;
 
 /**
  * CSV 파일 관련 기능을 정의.

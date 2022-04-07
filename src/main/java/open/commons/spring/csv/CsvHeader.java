@@ -18,30 +18,30 @@
  *
  * This file is generated under this project, "open-commons-csv".
  *
- * Date  : 2021. 8. 15. 오후 5:37:08
+ * Date  : 2021. 8. 13. 오후 5:41:43
  *
  * Author: Park Jun-Hong (parkjunhong77@gmail.com)
  * 
  */
 
-package open.commons.csv;
+package open.commons.spring.csv;
 
-import javax.validation.constraints.Min;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * CSV 데이터 컬럼 정렬 설정.
+ * CSV 헤더 정보 클래스.
  * 
- * @since 2021. 8. 15.
+ * @since 2021. 8. 13.
  * @version 0.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-public class ColumnSort {
+public class CsvHeader {
 
-    /** 컬럼 이름 */
-    @Min(1)
-    private final Integer index;
-    /** 정렬 방향 */
-    private final ColumnDirection direction;
+    /** 데이터 헤더 이름 */
+    private final String header;
+    /** 컬럼 데이터 타입 */
+    private ColumnDataType dataType;
 
     /**
      * <br>
@@ -50,46 +50,17 @@ public class ColumnSort {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 15.		박준홍			최초 작성
+     * 2021. 8. 13.		박준홍			최초 작성
      * </pre>
      *
-     * @param index
-     * @param direction
+     * @param header
      *
-     * @since 2021. 8. 15.
+     * @since 2021. 8. 13.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public ColumnSort(Integer index, ColumnDirection direction) {
-        this.index = index;
-        this.direction = direction;
-    }
-
-    /**
-     *
-     * @since 2021. 8. 15.
-     * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ColumnSort other = (ColumnSort) obj;
-        if (direction != other.direction)
-            return false;
-        if (index == null) {
-            if (other.index != null)
-                return false;
-        } else if (!index.equals(other.index))
-            return false;
-        return true;
+    public CsvHeader(@JsonProperty("header") String header) {
+        this(header, ColumnDataType.GENERAL);
     }
 
     /**
@@ -99,20 +70,20 @@ public class ColumnSort {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 15.		박준홍			최초 작성
+     * 2021. 8. 13.		박준홍			최초 작성
      * </pre>
-     * 
-     * @return the direction
      *
-     * @since 2021. 8. 15.
+     * @param header
+     * @param dataType
+     *
+     * @since 2021. 8. 13.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
-     *
-     * @see #direction
      */
-
-    public ColumnDirection getDirection() {
-        return direction;
+    @JsonCreator
+    public CsvHeader(@JsonProperty("header") String header, @JsonProperty("dataType") ColumnDataType dataType) {
+        this.header = header;
+        this.dataType = dataType;
     }
 
     /**
@@ -122,42 +93,71 @@ public class ColumnSort {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 15.		박준홍			최초 작성
+     * 2021. 8. 13.		박준홍			최초 작성
      * </pre>
      * 
-     * @return the index
+     * @return the dataType
      *
-     * @since 2021. 8. 15.
+     * @since 2021. 8. 13.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see #index
+     * @see #dataType
      */
 
-    public Integer getIndex() {
-        return index;
+    public ColumnDataType getDataType() {
+        return dataType;
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 13.		박준홍			최초 작성
+     * </pre>
+     * 
+     * @return the header
+     *
+     * @since 2021. 8. 13.
+     * @version 0.1.0
+     * @author Park Jun-Hong (parkjunhong77@gmail.com)
+     *
+     * @see #header
+     */
+
+    public String getHeader() {
+        return header;
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 13.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param dataType
+     *            the dataType to set
+     *
+     * @since 2021. 8. 13.
+     * @version 0.1.0
+     * @author Park Jun-Hong (parkjunhong77@gmail.com)
+     *
+     * @see #dataType
+     */
+    public void setDataType(ColumnDataType dataType) {
+        this.dataType = dataType;
     }
 
     /**
      *
-     * @since 2021. 8. 15.
-     * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
-     *
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((direction == null) ? 0 : direction.hashCode());
-        result = prime * result + ((index == null) ? 0 : index.hashCode());
-        return result;
-    }
-
-    /**
-     *
-     * @since 2021. 8. 15.
+     * @since 2021. 8. 13.
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
@@ -166,10 +166,10 @@ public class ColumnSort {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("ColumnSort [index=");
-        builder.append(index);
-        builder.append(", direction=");
-        builder.append(direction);
+        builder.append("CsvHeader [header=");
+        builder.append(header);
+        builder.append(", dataType=");
+        builder.append(dataType);
         builder.append("]");
         return builder.toString();
     }

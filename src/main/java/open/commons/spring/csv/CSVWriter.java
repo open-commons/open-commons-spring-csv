@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.csv;
+package open.commons.spring.csv;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -35,7 +35,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.function.Function;
 
-import open.commons.util.ArrayItr;
+import open.commons.core.util.ArrayItr;
 
 import au.com.bytecode.opencsv.ResultSetHelper;
 import au.com.bytecode.opencsv.ResultSetHelperService;

@@ -24,16 +24,16 @@
  * 
  */
 
-package open.commons.csv;
+package open.commons.spring.csv;
 
 import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import open.commons.csv.utils.CommonsUtils;
+import open.commons.core.utils.ExceptionUtils;
+import open.commons.spring.csv.utils.CommonsUtils;
 import open.commons.spring.web.servlet.InternalServerException;
-import open.commons.utils.ExceptionUtils;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 

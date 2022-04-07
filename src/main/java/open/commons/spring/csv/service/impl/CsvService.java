@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.csv.service.impl;
+package open.commons.spring.csv.service.impl;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -52,27 +52,27 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import open.commons.Result;
-import open.commons.concurrent.Mutex;
-import open.commons.csv.ColumnCondition;
-import open.commons.csv.ColumnDirection;
-import open.commons.csv.ColumnSort;
-import open.commons.csv.CsvFileConfig;
-import open.commons.csv.CsvFileOnMemory;
-import open.commons.csv.CsvFileSampling;
-import open.commons.csv.CsvHeader;
-import open.commons.csv.ManagedCsvFile;
-import open.commons.csv.MemorizedCsvFile;
-import open.commons.csv.service.ICsvService;
-import open.commons.csv.service.PositionDir;
+import open.commons.core.Result;
+import open.commons.core.concurrent.Mutex;
+import open.commons.core.csv.CsvFileConfig;
+import open.commons.core.test.StopWatch;
+import open.commons.core.utils.ExceptionUtils;
+import open.commons.core.utils.IOUtils;
+import open.commons.core.utils.NumberUtils;
+import open.commons.spring.csv.ColumnCondition;
+import open.commons.spring.csv.ColumnDirection;
+import open.commons.spring.csv.ColumnSort;
+import open.commons.spring.csv.CsvFileOnMemory;
+import open.commons.spring.csv.CsvFileSampling;
+import open.commons.spring.csv.CsvHeader;
+import open.commons.spring.csv.ManagedCsvFile;
+import open.commons.spring.csv.MemorizedCsvFile;
+import open.commons.spring.csv.service.ICsvService;
+import open.commons.spring.csv.service.PositionDir;
 import open.commons.spring.web.mvc.IAsyncJobHandler;
 import open.commons.spring.web.mvc.service.AbstractGenericService;
 import open.commons.spring.web.servlet.BadRequestException;
 import open.commons.spring.web.servlet.InternalServerException;
-import open.commons.test.StopWatch;
-import open.commons.utils.ExceptionUtils;
-import open.commons.utils.IOUtils;
-import open.commons.utils.NumberUtils;
 
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -198,7 +198,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#delete(java.lang.String, int)
+     * @see open.commons.spring.csv.service.ICsvService#delete(java.lang.String, int)
      */
     @Override
     public Result<Boolean> delete(@NotEmpty String uuid, @Min(1) int lineNumber) {
@@ -239,7 +239,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#getManagedFiles()
+     * @see open.commons.spring.csv.service.ICsvService#getManagedFiles()
      */
     @Override
     public Result<Set<String>> getManagedFiles() {
@@ -253,8 +253,8 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#insert(java.lang.String, int,
-     *      open.commons.csv.service.PositionDir, java.lang.Object[])
+     * @see open.commons.spring.csv.service.ICsvService#insert(java.lang.String, int,
+     *      open.commons.spring.csv.service.PositionDir, java.lang.Object[])
      */
     @Override
     public Result<Boolean> insert(@NotEmpty String uuid, @Min(1) int lineNumber, @NotNull PositionDir position, @NotEmpty Object[] data) {
@@ -272,7 +272,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#load(String, open.commons.csv.CsvFileConfig, CsvHeader[],
+     * @see open.commons.spring.csv.service.ICsvService#load(String, open.commons.csv.CsvFileConfig, CsvHeader[],
      *      boolean, java.lang.String, boolean)
      */
     @Override
@@ -330,8 +330,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#read(java.lang.String, java.lang.Integer,
-     *      java.lang.Integer)
+     * @see open.commons.spring.csv.service.ICsvService#read(java.lang.String, java.lang.Integer, java.lang.Integer)
      */
     @Override
     public Result<ManagedCsvFile> read(@NotEmpty String uuid, @Min(1) Integer lineNumber, @Min(1) Integer count) {
@@ -353,7 +352,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#release(java.lang.String)
+     * @see open.commons.spring.csv.service.ICsvService#release(java.lang.String)
      */
     @Override
     public Result<Boolean> release(@NotEmpty String uuid) {
@@ -365,7 +364,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#reload(java.lang.String, String)
+     * @see open.commons.spring.csv.service.ICsvService#reload(java.lang.String, String)
      */
     @Override
     public Result<CsvFileOnMemory> reload(@NotEmpty String uuid, String filepath) {
@@ -388,8 +387,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#sample(open.commons.csv.CsvFileConfig, java.lang.String,
-     *      int)
+     * @see open.commons.spring.csv.service.ICsvService#sample(open.commons.csv.CsvFileConfig, java.lang.String, int)
      */
     @Override
     public Result<CsvFileSampling> sample(@NotNull CsvFileConfig config, @NotNull String filepath, int count) {
@@ -450,7 +448,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#search(java.lang.String, java.util.List,
+     * @see open.commons.spring.csv.service.ICsvService#search(java.lang.String, java.util.List,
      *      org.springframework.data.domain.Pageable)
      */
     @Override
@@ -486,7 +484,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#update(java.lang.String, int, Object[])
+     * @see open.commons.spring.csv.service.ICsvService#update(java.lang.String, int, Object[])
      */
     @Override
     public Result<Boolean> update(@NotEmpty String uuid, @Min(1) int lineNumber, @NotEmpty Object[] data) {
@@ -539,7 +537,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * @version 0.1.0
      * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.csv.service.ICsvService#write(java.lang.String, java.lang.String)
+     * @see open.commons.spring.csv.service.ICsvService#write(java.lang.String, java.lang.String)
      */
     @Override
     public Result<Boolean> write(@NotEmpty String uuid, String filepath) {
