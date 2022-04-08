@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>open.commons</groupId>
-	<artifactId>open-commons-csv</artifactId>
+	<artifactId>open-commons-spring-csv</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 	<name>Open Commons for CSV</name>
 	<description>Open Commos for CSV file, related services.</description>
@@ -17,7 +17,7 @@
 
 	<properties>
 		<!-- >>> begin: plugin dependencies -->
-		<build.finalName>open-commons-csv-${project.version}</build.finalName>
+		<build.finalName>open-commons-spring-csv-${project.version}</build.finalName>
 
 		<encoding>UTF-8</encoding>
 		<java.version>1.8</java.version>
