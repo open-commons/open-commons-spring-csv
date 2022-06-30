@@ -1,3 +1,7 @@
+[2022/11/17]
+- Dependencies
+	+ spring-core.version: 5.3.23 고정
+
 [2022/04/07]
 - Release: 0.2.0-SNAPSHOT
 - Tag: 0.1.0
