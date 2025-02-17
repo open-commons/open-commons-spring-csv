@@ -1,3 +1,6 @@
+[2025/02/17]
+- Release: 0.2.0
+
 [2024/11/06]
 - Modify
   + spring-data-commons: v2.x.x 최대값으로 고정
