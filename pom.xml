@@ -37,7 +37,7 @@
 		<reflections.version>0.9.11</reflections.version>
 		<spring-data-commons.version>[2.5.2,2.7.18]</spring-data-commons.version>
 
-		<open-commons-core.version>2.0.0-SNAPSHOT</open-commons-core.version>
+		<open-commons-core.version>2.1.0-SNAPSHOT</open-commons-core.version>
 		<open-commons-spring-web.version>0.5.0-SNAPSHOT</open-commons-spring-web.version>
 		<!-- <<< end: dependencies -->
 	</properties>
