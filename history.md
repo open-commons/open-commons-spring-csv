@@ -1,5 +1,6 @@
 [2025/02/17]
 - Release: 0.2.0
+- Snapshot: 0.3.0-SNAPSHOT
 
 [2024/11/06]
 - Modify
