@@ -119,6 +119,22 @@
 		<!-- end: open.commons -->
 		<!-- ************** -->
 
+    <!-- ************** -->
+    <!-- >>> begin: Validation -->
+    <!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 -->
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+    </dependency>
+    <!-- <<< end: Validation -->
+    <!-- ************** -->
+
+
 	</dependencies>
 
 	<build>
