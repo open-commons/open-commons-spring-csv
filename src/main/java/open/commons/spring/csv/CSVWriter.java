@@ -102,7 +102,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param writer
@@ -123,7 +123,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param writer
@@ -146,7 +146,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param writer
@@ -171,7 +171,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param writer
@@ -198,7 +198,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 17.     박준홍         최초 작성
+     * 2021. 8. 17.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param writer
@@ -226,7 +226,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      *
@@ -256,7 +256,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 17.     박준홍         최초 작성
+     * 2021. 8. 17.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param writer
@@ -304,7 +304,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 17.     박준홍         최초 작성
+     * 2021. 8. 17.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param writer
@@ -330,7 +330,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      *
@@ -358,7 +358,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 17.     박준홍         최초 작성
+     * 2021. 8. 17.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param writer
@@ -386,7 +386,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 17.     박준홍         최초 작성
+     * 2021. 8. 17.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param writer
@@ -410,7 +410,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 17.     박준홍         최초 작성
+     * 2021. 8. 17.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param writer
@@ -432,7 +432,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @return
@@ -452,7 +452,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @throws IOException
@@ -477,7 +477,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @throws IOException
@@ -499,7 +499,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param nextElement
@@ -533,7 +533,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param resultService
@@ -554,7 +554,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param line
@@ -577,7 +577,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      *
@@ -613,7 +613,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      *
@@ -638,7 +638,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param rs
@@ -659,7 +659,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 17.     박준홍         최초 작성
+     * 2021. 8. 17.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      *
@@ -692,7 +692,7 @@ public class CSVWriter implements Closeable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 17.		박준홍			최초 작성
+     * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param nextLine

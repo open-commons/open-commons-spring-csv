@@ -140,7 +140,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 12.     박준홍         최초 작성
+     * 2021. 8. 12.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      * 
      * @since 2021. 8. 12.
@@ -156,7 +156,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 12.     박준홍         최초 작성
+     * 2021. 8. 12.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      * 
      * @param ttl
@@ -505,7 +505,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 15.     박준홍         최초 작성
+     * 2021. 8. 15.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      *
@@ -571,7 +571,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 13.     박준홍         최초 작성
+     * 2021. 8. 13.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param uuid
@@ -615,7 +615,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 15.     박준홍         최초 작성
+     * 2021. 8. 15.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param uuid
@@ -655,7 +655,7 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 13.     박준홍         최초 작성
+     * 2021. 8. 13.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      * 
      * @param uuid

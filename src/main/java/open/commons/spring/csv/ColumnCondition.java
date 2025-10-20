@@ -59,7 +59,7 @@ public class ColumnCondition {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 10.		박준홍			최초 작성
+     * 2021. 8. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      *
@@ -77,7 +77,7 @@ public class ColumnCondition {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 10.		박준홍			최초 작성
+     * 2021. 8. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the data
@@ -100,7 +100,7 @@ public class ColumnCondition {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 10.		박준홍			최초 작성
+     * 2021. 8. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the index
@@ -123,7 +123,7 @@ public class ColumnCondition {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 10.		박준홍			최초 작성
+     * 2021. 8. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the op
@@ -146,7 +146,7 @@ public class ColumnCondition {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 10.		박준홍			최초 작성
+     * 2021. 8. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param data
@@ -169,7 +169,7 @@ public class ColumnCondition {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 10.		박준홍			최초 작성
+     * 2021. 8. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param index
@@ -192,7 +192,7 @@ public class ColumnCondition {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 10.		박준홍			최초 작성
+     * 2021. 8. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param op

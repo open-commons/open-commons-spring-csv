@@ -55,7 +55,7 @@ public class CommonsUtils {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 12.     박준홍         최초 작성
+     * 2021. 8. 12.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param count
@@ -79,7 +79,7 @@ public class CommonsUtils {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 11.     박준홍         최초 작성
+     * 2021. 8. 11.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param count
@@ -101,7 +101,7 @@ public class CommonsUtils {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 13.     박준홍         최초 작성
+     * 2021. 8. 13.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param headers
@@ -122,7 +122,7 @@ public class CommonsUtils {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 13.     박준홍         최초 작성
+     * 2021. 8. 13.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param headers
@@ -143,7 +143,7 @@ public class CommonsUtils {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 11.     박준홍         최초 작성
+     * 2021. 8. 11.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param count
@@ -167,7 +167,7 @@ public class CommonsUtils {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 13.     박준홍         최초 작성
+     * 2021. 8. 13.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @return

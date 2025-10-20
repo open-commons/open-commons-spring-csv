@@ -50,7 +50,7 @@ public class CsvHeader {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 13.		박준홍			최초 작성
+     * 2021. 8. 13.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param header
@@ -70,7 +70,7 @@ public class CsvHeader {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 13.		박준홍			최초 작성
+     * 2021. 8. 13.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param header
@@ -93,7 +93,7 @@ public class CsvHeader {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 13.		박준홍			최초 작성
+     * 2021. 8. 13.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the dataType
@@ -116,7 +116,7 @@ public class CsvHeader {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 13.		박준홍			최초 작성
+     * 2021. 8. 13.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the header
@@ -139,7 +139,7 @@ public class CsvHeader {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 8. 13.		박준홍			최초 작성
+     * 2021. 8. 13.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param dataType

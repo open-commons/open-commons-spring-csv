@@ -54,7 +54,7 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 13.     박준홍         최초 작성
+     * 2021. 8. 13.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param filepath
@@ -75,7 +75,7 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 13.     박준홍         최초 작성
+     * 2021. 8. 13.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param data
@@ -102,7 +102,7 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 13.     박준홍         최초 작성
+     * 2021. 8. 13.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      * 
      * @return the data
@@ -122,7 +122,7 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 13.     박준홍         최초 작성
+     * 2021. 8. 13.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param data
@@ -168,7 +168,7 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 8. 15.     박준홍         최초 작성
+     * 2021. 8. 15.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param data
