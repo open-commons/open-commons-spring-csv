@@ -74,8 +74,7 @@ public class CsvLines {
      */
     public CsvLines(@NotEmpty CsvHeader[] headers) {
         AssertUtils2.notEmpty((Object[]) headers);
-        
-        
+
         this.headers = headers;
         this.dataLength = headers.length;
     }

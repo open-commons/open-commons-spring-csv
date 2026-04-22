@@ -130,7 +130,7 @@ public class MemorizedCsvFile {
      */
     public MemorizedCsvFile(String uuid, CsvFileConfig csvFileConfig, CsvHeader[] headers, boolean hasHeader,
             String filepath) {
-        
+
         AssertUtils2.notNulls(csvFileConfig, headers, filepath);
 
         if (!Files.isReadable(Paths.get(filepath))) {
