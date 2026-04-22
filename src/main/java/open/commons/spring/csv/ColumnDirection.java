@@ -29,6 +29,7 @@ package open.commons.spring.csv;
 import java.util.ArrayList;
 import java.util.List;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.annotation.RequestValueConverter;
 import open.commons.spring.web.annotation.RequestValueSupported;
 
@@ -60,7 +61,6 @@ public enum ColumnDirection {
      * @return a string of an instance of {@link ColumnDirection}
      *
      * @since 2021. 8. 15.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @JsonValue
     public String get() {
@@ -69,7 +69,6 @@ public enum ColumnDirection {
 
     /**
      * @since 2021. 8. 15.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Enum#toString()
      */
@@ -86,7 +85,6 @@ public enum ColumnDirection {
      * @return an instance of {@link ColumnDirection}
      *
      * @since 2021. 8. 15.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #get(String, boolean)
      */
@@ -104,14 +102,10 @@ public enum ColumnDirection {
      * @return an instance of {@link ColumnDirection}
      *
      * @since 2021. 8. 15.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @RequestValueConverter(hasIgnoreCase = true)
     public static ColumnDirection get(String dir, boolean ignoreCase) {
-
-        if (dir == null) {
-            throw new IllegalArgumentException("'dir' MUST NOT be null. input: " + dir);
-        }
+        AssertUtils2.notBlank(dir, "'dir' MUST NOT be null. input: %s", dir);
 
         if (ignoreCase) {
             for (ColumnDirection value : values()) {
@@ -127,7 +121,8 @@ public enum ColumnDirection {
             }
         }
 
-        throw new IllegalArgumentException("Unexpected 'dir' value of 'ColumnDirection'. expected: " + values0() + " & Ignore case-sensitive: " + ignoreCase + ", input: " + dir);
+        throw new IllegalArgumentException("Unexpected 'dir' value of 'ColumnDirection'. expected: " + values0()
+                + " & Ignore case-sensitive: " + ignoreCase + ", input: " + dir);
     }
 
     private static List<String> values0() {

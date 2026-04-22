@@ -26,6 +26,8 @@
 
 package open.commons.spring.csv;
 
+import open.commons.core.utils.AssertUtils2;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -57,7 +59,6 @@ public class CsvHeader {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CsvHeader(@JsonProperty("header") String header) {
         this(header, ColumnDataType.GENERAL);
@@ -78,10 +79,12 @@ public class CsvHeader {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @JsonCreator
     public CsvHeader(@JsonProperty("header") String header, @JsonProperty("dataType") ColumnDataType dataType) {
+        AssertUtils2.notBlank(header);
+        AssertUtils2.notNull(dataType);
+
         this.header = header;
         this.dataType = dataType;
     }
@@ -100,7 +103,6 @@ public class CsvHeader {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #dataType
      */
@@ -123,7 +125,6 @@ public class CsvHeader {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #header
      */
@@ -147,11 +148,12 @@ public class CsvHeader {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #dataType
      */
     public void setDataType(ColumnDataType dataType) {
+        AssertUtils2.notNull(dataType);
+
         this.dataType = dataType;
     }
 
@@ -159,7 +161,6 @@ public class CsvHeader {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

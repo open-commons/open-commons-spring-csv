@@ -29,6 +29,7 @@ package open.commons.spring.csv;
 import java.util.ArrayList;
 import java.util.List;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.annotation.RequestValueConverter;
 import open.commons.spring.web.annotation.RequestValueSupported;
 
@@ -76,7 +77,6 @@ public enum ColumnOp {
      * @return a string of an instance of {@link ColumnOp}
      *
      * @since 2021. 8.10.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @JsonValue
     public String get() {
@@ -85,7 +85,6 @@ public enum ColumnOp {
 
     /**
      * @since 2021. 8.10.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Enum#toString()
      */
@@ -102,7 +101,6 @@ public enum ColumnOp {
      * @return an instance of {@link ColumnOp}
      *
      * @since 2021. 8.10.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #get(String, boolean)
      */
@@ -120,14 +118,10 @@ public enum ColumnOp {
      * @return an instance of {@link ColumnOp}
      *
      * @since 2021. 8.10.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @RequestValueConverter(hasIgnoreCase = true)
     public static ColumnOp get(String op, boolean ignoreCase) {
-
-        if (op == null) {
-            throw new IllegalArgumentException("'op' MUST NOT be null. input: " + op);
-        }
+        AssertUtils2.notBlank(op, "'op' MUST NOT be null. input: %s", op);
 
         if (ignoreCase) {
             for (ColumnOp value : values()) {
@@ -143,7 +137,8 @@ public enum ColumnOp {
             }
         }
 
-        throw new IllegalArgumentException("Unexpected 'op' value of 'ColumnOp'. expected: " + values0() + " & Ignore case-sensitive: " + ignoreCase + ", input: " + op);
+        throw new IllegalArgumentException("Unexpected 'op' value of 'ColumnOp'. expected: " + values0()
+                + " & Ignore case-sensitive: " + ignoreCase + ", input: " + op);
     }
 
     private static List<String> values0() {

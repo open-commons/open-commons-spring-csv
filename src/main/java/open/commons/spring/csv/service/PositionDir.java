@@ -29,6 +29,7 @@ package open.commons.spring.csv.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.annotation.RequestValueConverter;
 import open.commons.spring.web.annotation.RequestValueSupported;
 
@@ -64,7 +65,6 @@ public enum PositionDir {
      * @return a string of an instance of {@link PositionDir}
      *
      * @since 2021. 8. 11.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @JsonValue
     public String get() {
@@ -73,7 +73,6 @@ public enum PositionDir {
 
     /**
      * @since 2021. 8. 11.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Enum#toString()
      */
@@ -94,7 +93,6 @@ public enum PositionDir {
      * @return an instance of {@link PositionDir}
      *
      * @since 2021. 8. 11.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #get(String, boolean)
      */
@@ -112,14 +110,10 @@ public enum PositionDir {
      * @return an instance of {@link PositionDir}
      *
      * @since 2021. 8. 11.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @RequestValueConverter(hasIgnoreCase = true)
     public static PositionDir get(String position, boolean ignoreCase) {
-
-        if (position == null) {
-            throw new IllegalArgumentException("'position' MUST NOT be null. input: " + position);
-        }
+        AssertUtils2.notBlank(position, "'position' MUST NOT be null. input: %s", position);
 
         if (ignoreCase) {
             for (PositionDir value : values()) {
@@ -135,8 +129,8 @@ public enum PositionDir {
             }
         }
 
-        throw new IllegalArgumentException(
-                "Unexpected 'position' value of 'PositionDir'. expected: " + values0() + " & Ignore case-sensitive: " + ignoreCase + ", input: " + position);
+        throw new IllegalArgumentException("Unexpected 'position' value of 'PositionDir'. expected: " + values0()
+                + " & Ignore case-sensitive: " + ignoreCase + ", input: " + position);
     }
 
     private static List<String> values0() {

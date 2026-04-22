@@ -26,7 +26,9 @@
 
 package open.commons.spring.csv;
 
-import javax.validation.constraints.Min;
+import jakarta.validation.constraints.Min;
+
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * CSV 데이터 컬럼 정렬 설정.
@@ -58,9 +60,10 @@ public class ColumnSort {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ColumnSort(Integer index, ColumnDirection direction) {
+        AssertUtils2.notNull(direction);
+
         this.index = index;
         this.direction = direction;
     }
@@ -69,7 +72,6 @@ public class ColumnSort {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -106,7 +108,6 @@ public class ColumnSort {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #direction
      */
@@ -129,7 +130,6 @@ public class ColumnSort {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #index
      */
@@ -142,7 +142,6 @@ public class ColumnSort {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#hashCode()
      */
@@ -159,7 +158,6 @@ public class ColumnSort {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

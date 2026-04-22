@@ -29,6 +29,7 @@ package open.commons.spring.csv;
 import java.util.ArrayList;
 import java.util.List;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.annotation.RequestValueConverter;
 import open.commons.spring.web.annotation.RequestValueSupported;
 
@@ -65,7 +66,6 @@ public enum ColumnDataType {
      * @return a string of an instance of {@link ColumnDataType}
      *
      * @since 2021. 8. 13.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @JsonValue
     public String get() {
@@ -74,7 +74,6 @@ public enum ColumnDataType {
 
     /**
      * @since 2021. 8. 13.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Enum#toString()
      */
@@ -95,7 +94,6 @@ public enum ColumnDataType {
      * @return an instance of {@link ColumnDataType}
      *
      * @since 2021. 8. 13.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #get(String, boolean)
      */
@@ -113,14 +111,10 @@ public enum ColumnDataType {
      * @return an instance of {@link ColumnDataType}
      *
      * @since 2021. 8. 13.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @RequestValueConverter(hasIgnoreCase = true)
     public static ColumnDataType get(String type, boolean ignoreCase) {
-
-        if (type == null) {
-            throw new IllegalArgumentException("'type' MUST NOT be null. input: " + type);
-        }
+        AssertUtils2.notBlank(type, "'type' MUST NOT be null. input: %s", type);
 
         if (ignoreCase) {
             for (ColumnDataType value : values()) {
@@ -136,7 +130,8 @@ public enum ColumnDataType {
             }
         }
 
-        throw new IllegalArgumentException("Unexpected 'type' value of 'ColumnDataType'. expected: " + values0() + " & Ignore case-sensitive: " + ignoreCase + ", input: " + type);
+        throw new IllegalArgumentException("Unexpected 'type' value of 'ColumnDataType'. expected: " + values0()
+                + " & Ignore case-sensitive: " + ignoreCase + ", input: " + type);
     }
 
     private static List<String> values0() {

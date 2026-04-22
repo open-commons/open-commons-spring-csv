@@ -43,9 +43,9 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Vector;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,11 +56,12 @@ import open.commons.core.Result;
 import open.commons.core.concurrent.Mutex;
 import open.commons.core.csv.CsvFileConfig;
 import open.commons.core.utils.ArrayUtils;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ComparableUtils;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.csv.service.PositionDir;
-import open.commons.spring.web.servlet.BadRequestException;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.BadRequestException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 
 /**
  * 
@@ -126,12 +127,15 @@ public class MemorizedCsvFile {
      *            CSV 파일 경로
      * @since 2021. 8. 12.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public MemorizedCsvFile(String uuid, CsvFileConfig csvFileConfig, CsvHeader[] headers, boolean hasHeader, String filepath) {
+    public MemorizedCsvFile(String uuid, CsvFileConfig csvFileConfig, CsvHeader[] headers, boolean hasHeader,
+            String filepath) {
+        
+        AssertUtils2.notNulls(csvFileConfig, headers, filepath);
 
         if (!Files.isReadable(Paths.get(filepath))) {
-            throw ExceptionUtils.newException(BadRequestException.class, new FileNotFoundException(filepath), "존재하지 않거나 접근권한이 없는 파일입니다. 파일=%s", filepath);
+            throw ExceptionUtils.newException(BadRequestException.class, new FileNotFoundException(filepath),
+                    "존재하지 않거나 접근권한이 없는 파일입니다. 파일=%s", filepath);
         }
 
         this.created = System.currentTimeMillis();
@@ -156,7 +160,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 14.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public long afterAccessed() {
         synchronized (mutexTimestamp) {
@@ -178,7 +181,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 14.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public long afterCreated() {
         return System.currentTimeMillis() - this.created;
@@ -198,7 +200,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 14.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public long afterModified() {
         synchronized (mutexTimestamp) {
@@ -224,12 +225,12 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private <X extends RuntimeException> void assertDataLength(Object[] line, Class<X> exType) {
         // 헤더와 데이터 길이 검증
         if (this.headers.length != line.length) {
-            String errMsg = String.format("헤더 길이와 데이터 길이가 일치하지 않습니다. 헤더=%,d, 데이터=%,d", this.headers.length, line.length);
+            String errMsg = String.format("헤더 길이와 데이터 길이가 일치하지 않습니다. 헤더=%,d, 데이터=%,d", this.headers.length,
+                    line.length);
             logger.warn(errMsg);
             throw ExceptionUtils.newException(exType, errMsg);
         }
@@ -256,9 +257,9 @@ public class MemorizedCsvFile {
      *             줄 번호가 올바르지 않은 경우
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    private <X extends RuntimeException> void assertLineNumber(int index, Class<X> exType, String exMessage) throws BadRequestException {
+    private <X extends RuntimeException> void assertLineNumber(int index, Class<X> exType, String exMessage)
+            throws BadRequestException {
         if (index < 0 || index >= this.lines.size()) {
             logger.warn(exMessage);
             throw ExceptionUtils.newException(exType, exMessage);
@@ -281,11 +282,11 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 16.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> delete(@Min(1) Integer lineNumber) {
         synchronized (mutexLines) {
-            assertLineNumber(lineNumber - 1, BadRequestException.class, String.format("범위를 벗어난 줄번호 입니다. 범위: 1 ~ %,d, 입력=%,d", this.lines.size(), lineNumber));
+            assertLineNumber(lineNumber - 1, BadRequestException.class,
+                    String.format("범위를 벗어난 줄번호 입니다. 범위: 1 ~ %,d, 입력=%,d", this.lines.size(), lineNumber));
 
             this.lines.remove(lineNumber - 1);
             updateTimestamp(true);
@@ -311,7 +312,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private Object[] deserialize(int lineNumber, String[] readline) {
         final Object[] data = new Object[readline.length];
@@ -428,7 +428,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private boolean filter(Double colData, ColumnOp op, Object condValue) {
         if (colData == null) {
@@ -480,7 +479,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private boolean filter(Long colData, ColumnOp op, Object condValue) {
         if (colData == null) {
@@ -532,7 +530,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private boolean filter(String colData, ColumnOp op, Object condValue) {
         if (colData == null) {
@@ -584,7 +581,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private List<IndexedObject> get0(ColumnSort sort, @NotNull Collection<ColumnCondition> conditions) {
         sort(sort);
@@ -609,7 +605,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #accessed
      */
@@ -632,7 +627,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #created
      */
@@ -655,7 +649,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #csvFileConfig
      */
@@ -678,7 +671,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #filepath
      */
@@ -701,7 +693,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #hasHeader
      */
@@ -724,7 +715,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
      */
@@ -747,7 +737,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #modified
      */
@@ -769,7 +758,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 16.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public int getSize() {
         synchronized (mutexLines) {
@@ -792,10 +780,8 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #uuid
-     * 
      */
     public String getUuid() {
         return uuid;
@@ -823,11 +809,12 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 16.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public Result<Boolean> insertData(@NotNull @Min(1) Integer lineNumber, @NotNull PositionDir position, @NotEmpty Object[] data) throws BadRequestException {
+    public Result<Boolean> insertData(@NotNull @Min(1) Integer lineNumber, @NotNull PositionDir position,
+            @NotEmpty Object[] data) throws BadRequestException {
         // 줄 번호 검증
-        assertLineNumber(lineNumber - 1, BadRequestException.class, String.format("범위를 벗어난 줄번호 입니다. 범위: 1 ~ %,d, 입력=%,d", this.lines.size(), lineNumber));
+        assertLineNumber(lineNumber - 1, BadRequestException.class,
+                String.format("범위를 벗어난 줄번호 입니다. 범위: 1 ~ %,d, 입력=%,d", this.lines.size(), lineNumber));
         // 신규 데이터 검증
         validateData(data);
 
@@ -872,7 +859,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void loadLineData(@Min(1) Integer lineNumber, @NotEmpty String[] readline) throws BadRequestException {
         // 헤더와 데이터 길이 검증
@@ -904,7 +890,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ManagedCsvFile read(@Min(1) Integer lineNumber, @Min(1) Integer count) throws BadRequestException {
         synchronized (mutexLines) {
@@ -913,7 +898,8 @@ public class MemorizedCsvFile {
             int begin = lineNumber - 1;
             final int totalSize = filtered.size();
             if (begin > totalSize) {
-                throw ExceptionUtils.newException(BadRequestException.class, "읽기 시작하려는 줄 번호가 전체 데이터보다 큽니다. 전체 데이터=%,d, 읽기 시작하려는 줄번호=%,d", totalSize, lineNumber);
+                throw ExceptionUtils.newException(BadRequestException.class,
+                        "읽기 시작하려는 줄 번호가 전체 데이터보다 큽니다. 전체 데이터=%,d, 읽기 시작하려는 줄번호=%,d", totalSize, lineNumber);
             }
 
             final int end = Integer.min(begin + count, totalSize);
@@ -929,7 +915,8 @@ public class MemorizedCsvFile {
             } catch (BadRequestException e) {
                 throw e;
             } catch (Exception e) {
-                String errMsg = String.format("데이터 읽는 도중 에러가 발생하였습니다. lineNumber=%,d, count=%,d, 원인=%s", lineNumber, count, e.getMessage());
+                String errMsg = String.format("데이터 읽는 도중 에러가 발생하였습니다. lineNumber=%,d, count=%,d, 원인=%s", lineNumber,
+                        count, e.getMessage());
                 logger.error(errMsg, e);
                 throw ExceptionUtils.newException(InternalServerException.class, e, errMsg);
             }
@@ -959,9 +946,9 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 16.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public ManagedCsvFile search(ColumnSort sort, @NotNull final Collection<ColumnCondition> conditions, Pageable pageable) throws BadRequestException {
+    public ManagedCsvFile search(ColumnSort sort, @NotNull final Collection<ColumnCondition> conditions,
+            Pageable pageable) throws BadRequestException {
 
         synchronized (mutexLines) {
             List<IndexedObject> filtered = get0(sort, conditions);
@@ -999,7 +986,8 @@ public class MemorizedCsvFile {
                 } catch (BadRequestException e) {
                     throw e;
                 } catch (Exception e) {
-                    String errMsg = String.format("데이터 읽는 도중 에러가 발생하였습니다. lineNumber=%,d, size=%,d, 원인=%s", lineNumber, pageSize, e.getMessage());
+                    String errMsg = String.format("데이터 읽는 도중 에러가 발생하였습니다. lineNumber=%,d, size=%,d, 원인=%s", lineNumber,
+                            pageSize, e.getMessage());
                     logger.error(errMsg, e);
                     throw ExceptionUtils.newException(InternalServerException.class, e, errMsg);
                 }
@@ -1037,14 +1025,14 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see 이 함수를 호출하는 곳에서 반드시 {@link #mutexLines}에 대해 synchroized 설정을 해야 한다.
      */
     private CsvLines select(List<IndexedObject> data, final @Min(1) Integer begin, final @Min(1) Integer end) {
 
         if (begin < 0 || end < 1) {
-            String errMsg = String.format("데이터 검색 위치가 범위를 벗어났습니다. begin=%,d, end=%,d, MAX=%,d", begin, end, Integer.MAX_VALUE);
+            String errMsg = String.format("데이터 검색 위치가 범위를 벗어났습니다. begin=%,d, end=%,d, MAX=%,d", begin, end,
+                    Integer.MAX_VALUE);
             logger.error(errMsg);
             throw ExceptionUtils.newException(BadRequestException.class, errMsg);
         }
@@ -1073,7 +1061,8 @@ public class MemorizedCsvFile {
         } catch (BadRequestException e) {
             throw e;
         } catch (Exception e) {
-            String errMsg = String.format("데이터 읽는 도중 에러가 발생하였습니다. lineNumber=%,d, count=%,d, postion=%,d, 원인=%s", begin + 1, end - begin, pos, e.getMessage());
+            String errMsg = String.format("데이터 읽는 도중 에러가 발생하였습니다. lineNumber=%,d, count=%,d, postion=%,d, 원인=%s",
+                    begin + 1, end - begin, pos, e.getMessage());
             logger.error(errMsg, e);
             throw ExceptionUtils.newException(BadRequestException.class, e, errMsg);
         } finally {
@@ -1098,7 +1087,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 16.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private String[] serialize(int lineNumber, Object[] data) {
         final String[] lines = new String[data.length];
@@ -1157,7 +1145,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #accessed
      */
@@ -1180,7 +1167,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #modified
      */
@@ -1203,8 +1189,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private void sort(ColumnSort sort) {
         if (sort != null) {
@@ -1218,7 +1202,6 @@ public class MemorizedCsvFile {
     /**
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */
@@ -1263,12 +1246,12 @@ public class MemorizedCsvFile {
      *             줄 번호가 올바르지 않은 경우
      *
      * @since 2021. 8. 13.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> updateLine(@NotNull Integer lineNumber, Object[] line) throws BadRequestException {
         synchronized (mutexLines) {
             // 중복 라인 검증
-            assertLineNumber(lineNumber - 1, BadRequestException.class, String.format("범위를 벗어난 줄번호 입니다. 범위: 1 ~ %,d, 입력=%,d", this.lines.size(), lineNumber));
+            assertLineNumber(lineNumber - 1, BadRequestException.class,
+                    String.format("범위를 벗어난 줄번호 입니다. 범위: 1 ~ %,d, 입력=%,d", this.lines.size(), lineNumber));
             // 헤더와 데이터 길이 검증
             assertDataLength(line, BadRequestException.class);
             // 헤더 정의에 맞는지 데이터 검증.
@@ -1297,7 +1280,6 @@ public class MemorizedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private void updateTimestamp(boolean isModified) {
         final long currentTimestamp = System.currentTimeMillis();
@@ -1344,7 +1326,8 @@ public class MemorizedCsvFile {
                         break;
                     case STR:
                         if (String.class != value.getClass()) {
-                            throw ExceptionUtils.newException(BadRequestException.class, "헤더의 컬럼 데이터 타입과 일치하지 않는 데이터 입니다. header.column-data-type=%s, 입력값: %s", type,
+                            throw ExceptionUtils.newException(BadRequestException.class,
+                                    "헤더의 컬럼 데이터 타입과 일치하지 않는 데이터 입니다. header.column-data-type=%s, 입력값: %s", type,
                                     value.getClass());
                         }
                         break;
@@ -1356,7 +1339,8 @@ public class MemorizedCsvFile {
                         break;
                 }
             } catch (NumberFormatException e) {
-                throw ExceptionUtils.newException(BadRequestException.class, "헤더의 컬럼 데이터 타입과 일치하지 않는 데이터 입니다. header.column-data-type=%s, 입력값: %s", type, value.getClass());
+                throw ExceptionUtils.newException(BadRequestException.class,
+                        "헤더의 컬럼 데이터 타입과 일치하지 않는 데이터 입니다. header.column-data-type=%s, 입력값: %s", type, value.getClass());
             }
         }
     }
@@ -1376,15 +1360,18 @@ public class MemorizedCsvFile {
      * @return
      *
      * @since 2021. 8. 16.
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public Result<Boolean> write(@NotEmpty String filepath) {
         synchronized (mutexLines) {
             try (CSVWriter writer = hasHeader //
-                    ? new CSVWriter(new OutputStreamWriter(new FileOutputStream(filepath, false), this.csvFileConfig.getCharsetName()) //
-                            , this.csvFileConfig.getSeparator(), this.csvFileConfig.getQuotechar(), this.csvFileConfig.getEscape(), this.headers) //
-                    : new CSVWriter(new OutputStreamWriter(new FileOutputStream(filepath, false), this.csvFileConfig.getCharsetName()) //
-                            , this.csvFileConfig.getSeparator(), this.csvFileConfig.getQuotechar(), this.csvFileConfig.getEscape())) {
+                    ? new CSVWriter(new OutputStreamWriter(new FileOutputStream(filepath, false),
+                            this.csvFileConfig.getCharsetName()) //
+                            , this.csvFileConfig.getSeparator(), this.csvFileConfig.getQuotechar(),
+                            this.csvFileConfig.getEscape(), this.headers) //
+                    : new CSVWriter(new OutputStreamWriter(new FileOutputStream(filepath, false),
+                            this.csvFileConfig.getCharsetName()) //
+                            , this.csvFileConfig.getSeparator(), this.csvFileConfig.getQuotechar(),
+                            this.csvFileConfig.getEscape())) {
                 String[] line = null;
                 if (hasHeader) {
                     writer.writeHeader();
@@ -1478,7 +1465,6 @@ public class MemorizedCsvFile {
 
         /**
          * @since 2021. 8. 16.
-         * @author Park Jun-Hong (parkjunhong77@gmail.com)
          *
          * @see java.lang.Object#toString()
          */
@@ -1516,7 +1502,6 @@ public class MemorizedCsvFile {
          * @param sort
          * @since 2021. 8. 15.
          * @version 0.1.0
-         * @author Park Jun-Hong (parkjunhong77@gmail.com)
          */
         public Sorter(CsvHeader header, ColumnSort sort) {
             this.header = header;
@@ -1528,7 +1513,6 @@ public class MemorizedCsvFile {
         /**
          * @since 2021. 8. 15.
          * @version 0.1.0
-         * @author Park Jun-Hong (parkjunhong77@gmail.com)
          *
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
          */
@@ -1555,7 +1539,8 @@ public class MemorizedCsvFile {
                     c = -1;
                     break;
                 default:
-                    throw ExceptionUtils.newException(IllegalArgumentException.class, "데이터 정렬 도중 에러가 발생하였습니다. header=%s, sort=%s", header, sort);
+                    throw ExceptionUtils.newException(IllegalArgumentException.class,
+                            "데이터 정렬 도중 에러가 발생하였습니다. header=%s, sort=%s", header, sort);
             }
 
             if (this.orderBy.equals(ColumnDirection.ASC)) {
@@ -1580,7 +1565,6 @@ public class MemorizedCsvFile {
          *
          * @since 2021. 8. 15.
          * @version 0.1.0
-         * @author Park Jun-Hong (parkjunhong77@gmail.com)
          * 
          * @see #header
          */
@@ -1603,7 +1587,6 @@ public class MemorizedCsvFile {
          *
          * @since 2021. 8. 15.
          * @version 0.1.0
-         * @author Park Jun-Hong (parkjunhong77@gmail.com)
          * 
          * @see #index
          */
@@ -1626,7 +1609,6 @@ public class MemorizedCsvFile {
          *
          * @since 2021. 8. 15.
          * @version 0.1.0
-         * @author Park Jun-Hong (parkjunhong77@gmail.com)
          * 
          * @see #orderBy
          */

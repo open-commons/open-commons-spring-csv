@@ -29,11 +29,14 @@ package open.commons.spring.csv;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
+
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.csv.utils.CommonsUtils;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 
@@ -72,9 +75,10 @@ public abstract class AbstractCsvFileLoad {
      *            파일 경로
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public AbstractCsvFileLoad(@NotNull String filepath) {
+    public AbstractCsvFileLoad(String filepath) {
+        AssertUtils2.notBlank(filepath);
+
         this.filepath = filepath;
     }
 
@@ -92,9 +96,8 @@ public abstract class AbstractCsvFileLoad {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public void addHeaders(String... headers) {
+    public void addHeaders(String @Nullable... headers) {
         if (headers == null) {
             this.headers = new CsvHeader[0];
         } else {
@@ -117,7 +120,6 @@ public abstract class AbstractCsvFileLoad {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #csvcolumndatatype
      */
@@ -140,7 +142,6 @@ public abstract class AbstractCsvFileLoad {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #filepath
      */
@@ -163,7 +164,6 @@ public abstract class AbstractCsvFileLoad {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
      */
@@ -186,12 +186,13 @@ public abstract class AbstractCsvFileLoad {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
      */
     @JsonSetter
-    public void setHeaders(CsvHeader[] headers) {
+    public void setHeaders(CsvHeader... headers) {
+        AssertUtils2.notNulls((Object[]) headers);
+
         this.headers = headers;
     }
 
@@ -210,11 +211,11 @@ public abstract class AbstractCsvFileLoad {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void setHeaders(int count) {
         if (count < 0) {
-            throw ExceptionUtils.newException(InternalServerException.class, "올바르지 않은 헤더 사이즈입니다. 기대=0 이상, 입력=%,d", count);
+            throw ExceptionUtils.newException(InternalServerException.class, "올바르지 않은 헤더 사이즈입니다. 기대=0 이상, 입력=%,d",
+                    count);
         }
         this.headers = CommonsUtils.csvHeaderArray(count);
     }
@@ -234,14 +235,12 @@ public abstract class AbstractCsvFileLoad {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
      */
     public void setHeaders(List<String> headers) {
-        if (headers == null) {
-            throw ExceptionUtils.newException(InternalServerException.class, "올바르지 않은 헤더 정보입니다. 입력=null");
-        }
+        AssertUtils2.notNull(headers, InternalServerException.class, "올바르지 않은 헤더 정보입니다. 입력=null");
+
         this.headers = CommonsUtils.csvHeaders(headers);
     }
 
@@ -260,21 +259,18 @@ public abstract class AbstractCsvFileLoad {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #headers
      */
     public void setHeaders(String... headers) {
-        if (headers == null) {
-            throw ExceptionUtils.newException(InternalServerException.class, "올바르지 않은 헤더 정보입니다. 입력=null");
-        }
+        AssertUtils2.notNull(headers, InternalServerException.class, "올바르지 않은 헤더 정보입니다. 입력=null");
+
         this.headers = CommonsUtils.csvHeaders(headers);
     }
 
     /**
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

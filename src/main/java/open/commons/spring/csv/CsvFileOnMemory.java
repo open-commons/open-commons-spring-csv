@@ -28,8 +28,8 @@ package open.commons.spring.csv;
 
 import java.util.Arrays;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * CSV 파일을 메모리에 로딩한 결과 클래스.
@@ -61,7 +61,6 @@ public class CsvFileOnMemory extends AbstractCsvFileLoad {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CsvFileOnMemory(@NotNull String filepath, @Min(0) int lineCount) {
         super(filepath);
@@ -83,7 +82,6 @@ public class CsvFileOnMemory extends AbstractCsvFileLoad {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #lineCount
      */
@@ -94,7 +92,6 @@ public class CsvFileOnMemory extends AbstractCsvFileLoad {
     /**
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

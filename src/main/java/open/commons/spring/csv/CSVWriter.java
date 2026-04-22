@@ -35,10 +35,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.function.Function;
 
-import open.commons.core.util.ArrayItr;
+import org.jspecify.annotations.Nullable;
 
-import au.com.bytecode.opencsv.ResultSetHelper;
-import au.com.bytecode.opencsv.ResultSetHelperService;
+import open.commons.core.util.ArrayItr;
+import open.commons.core.utils.AssertUtils2;
+
+import com.opencsv.ResultSetHelper;
+import com.opencsv.ResultSetHelperService;
 
 /**
  * CSV 데이터를 파일로 저장하는 클래스. <br>
@@ -110,7 +113,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer) {
         this(writer, DEFAULT_SEPARATOR);
@@ -133,7 +135,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator) {
         this(writer, separator, DEFAULT_QUOTE_CHARACTER);
@@ -158,7 +159,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar) {
         this(writer, separator, quotechar, DEFAULT_ESCAPE_CHARACTER);
@@ -185,7 +185,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, char escapechar) {
         this(writer, separator, quotechar, escapechar, DEFAULT_LINE_END);
@@ -213,7 +212,6 @@ public class CSVWriter implements Closeable {
      *            CSV 헤더
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, char escapechar, CsvHeader[] headers) {
         this(writer, separator, quotechar, escapechar, DEFAULT_LINE_END, headers);
@@ -229,7 +227,6 @@ public class CSVWriter implements Closeable {
      * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @param writer
      *            the writer to an underlying CSV source.
      * @param separator
@@ -243,14 +240,14 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, char escapechar, String lineEnd) {
         this(writer, separator, quotechar, escapechar, lineEnd, null);
     }
 
     /**
-     * Constructs CSVWriter with supplied separator, quote char, escape char, line ending and 'csv' headers. <br>
+     * Constructs CSVWriter with supplied separator, quote char, escape char, line ending and 'csv'
+     * headers. <br>
      * 
      * <pre>
      * [개정이력]
@@ -273,9 +270,11 @@ public class CSVWriter implements Closeable {
      *            CSV 헤더 정보
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public CSVWriter(Writer writer, char separator, char quotechar, char escapechar, String lineEnd, final CsvHeader[] headers) {
+    public CSVWriter(Writer writer, char separator, char quotechar, char escapechar, String lineEnd,
+            final CsvHeader @Nullable [] headers) {
+        AssertUtils2.notNull(writer);
+
         this.rawWriter = writer;
         this.pw = new PrintWriter(writer);
         this.separator = separator;
@@ -293,7 +292,7 @@ public class CSVWriter implements Closeable {
                             return false;
                     }
                 }
-                : idx -> true //
+                : _ -> true //
         ;
     }
 
@@ -317,7 +316,6 @@ public class CSVWriter implements Closeable {
      *            CSV 헤더
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, CsvHeader[] headers) {
         this(writer, separator, quotechar, DEFAULT_ESCAPE_CHARACTER, headers);
@@ -333,7 +331,6 @@ public class CSVWriter implements Closeable {
      * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @param writer
      *            the writer to an underlying CSV source.
      * @param separator
@@ -345,7 +342,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, String lineEnd) {
         this(writer, separator, quotechar, DEFAULT_ESCAPE_CHARACTER, lineEnd);
@@ -373,7 +369,6 @@ public class CSVWriter implements Closeable {
      *            CSV 헤더
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, char quotechar, String lineEnd, CsvHeader[] headers) {
         this(writer, separator, quotechar, DEFAULT_ESCAPE_CHARACTER, lineEnd, headers);
@@ -397,7 +392,6 @@ public class CSVWriter implements Closeable {
      *            CSV 헤더
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, char separator, CsvHeader[] headers) {
         this(writer, separator, DEFAULT_QUOTE_CHARACTER, headers);
@@ -419,7 +413,6 @@ public class CSVWriter implements Closeable {
      *            CSV 헤더
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CSVWriter(Writer writer, CsvHeader[] headers) {
         this(writer, DEFAULT_SEPARATOR, headers);
@@ -439,7 +432,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public boolean checkError() {
         return pw.checkError();
@@ -460,7 +452,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see java.io.Closeable#close()
      */
@@ -485,7 +476,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void flush() throws IOException {
         pw.flush();
@@ -507,7 +497,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     protected StringBuilder processLine(String nextElement) {
         StringBuilder sb = new StringBuilder(INITIAL_STRING_SIZE);
@@ -540,7 +529,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void setResultService(ResultSetHelper resultService) {
         this.resultService = resultService;
@@ -562,7 +550,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private boolean stringContainsSpecialCharacters(String line) {
         return line.indexOf(quotechar) != -1 || line.indexOf(escapechar) != -1;
@@ -580,7 +567,6 @@ public class CSVWriter implements Closeable {
      * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @param rs
      *            the recordset to write
      * @param includeColumnNames
@@ -593,7 +579,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void writeAll(java.sql.ResultSet rs, boolean includeColumnNames) throws SQLException, IOException {
 
@@ -616,13 +601,11 @@ public class CSVWriter implements Closeable {
      * 2021. 8. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @param allLines
      *            a List of String[], with each String[] representing a line of the file.
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void writeAll(List<String[]> allLines) {
         for (String[] line : allLines) {
@@ -646,7 +629,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     protected void writeColumnNames(ResultSet rs) throws SQLException {
         writeNext(resultService.getColumnNames(rs));
@@ -662,10 +644,8 @@ public class CSVWriter implements Closeable {
      * 2021. 8. 17.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
-     *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void writeHeader() {
         if (this.headers != null) {
@@ -700,7 +680,6 @@ public class CSVWriter implements Closeable {
      *
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void writeNext(String[] nextLine) {
 
@@ -722,11 +701,13 @@ public class CSVWriter implements Closeable {
                 continue;
             }
 
-            processedString = (stringContainsSpecialCharacters(nextElement) ? processLine(nextElement) : nextElement).toString();
+            processedString = (stringContainsSpecialCharacters(nextElement) ? processLine(nextElement) : nextElement)
+                    .toString();
 
             if (this.quotechar != NO_QUOTE_CHARACTER // Quotes char이 설정되어 있고,
                     && this.wrapWithQuotes.apply(i) // 데이터 타입이 문자열이고,
-                    && processedString.indexOf(this.separator) > -1 // 데이터에 구분자(separator)가 포함되어 있지 않고
+                    && processedString.indexOf(this.separator) > -1 // 데이터에 구분자(separator)가 포함되어 있지
+                                                                    // 않고
             ) {
                 sb.append(this.quotechar);
                 sb.append(processedString);

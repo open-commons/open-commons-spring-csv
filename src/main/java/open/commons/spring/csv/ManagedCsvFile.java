@@ -31,6 +31,8 @@ import java.util.Date;
 
 import org.springframework.data.domain.Pageable;
 
+import open.commons.core.utils.AssertUtils2;
+
 /**
  * CSV 파일에서 읽은 데이터 정보.
  * 
@@ -70,10 +72,10 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ManagedCsvFile(String filepath, CsvLines lines) {
-        super();
+        AssertUtils2.notNulls(filepath, lines);
+
         this.filepath = filepath;
         this.lines = lines;
     }
@@ -92,7 +94,6 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #filepath
      */
@@ -115,7 +116,6 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lines
      */
@@ -138,7 +138,6 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #pageable
      */
@@ -161,7 +160,6 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #releaseTime
      */
@@ -184,7 +182,6 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #totalSize
      */
@@ -208,7 +205,6 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #pageable
      */
@@ -231,7 +227,6 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #releaseTime
      */
@@ -254,7 +249,6 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #totalSize
      */
@@ -266,7 +260,6 @@ public class ManagedCsvFile {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

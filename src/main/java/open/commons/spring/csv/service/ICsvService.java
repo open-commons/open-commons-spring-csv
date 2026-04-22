@@ -29,9 +29,10 @@ package open.commons.spring.csv.service;
 import java.util.List;
 import java.util.Set;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.data.domain.Pageable;
 
@@ -70,9 +71,8 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 16.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<Boolean> delete(@NotEmpty String uuid, @Min(1) int lineNumber);
+    public Result<Boolean> delete(@NotBlank String uuid, @Min(1) int lineNumber);
 
     /**
      * 메모리에 적재된 CSV 파일 데이터들의 식별정보 목록을 제공한다. <br>
@@ -87,7 +87,6 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 15.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public Result<Set<String>> getManagedFiles();
 
@@ -114,9 +113,9 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 16.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<Boolean> insert(@NotEmpty String uuid, @Min(1) int lineNumber, @NotNull PositionDir position, @NotEmpty Object[] data);
+    public Result<Boolean> insert(@NotBlank String uuid, @Min(1) int lineNumber, PositionDir position,
+            @NotEmpty Object[] data);
 
     /**
      * CSV 파일을 메모리에 로딩한다. <br>
@@ -143,10 +142,9 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 12.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<CsvFileOnMemory> load(@NotEmpty String uuid, @NotNull CsvFileConfig config, @NotEmpty CsvHeader[] headers, boolean hasHeader, @NotNull String filepath,
-            boolean reload);
+    public Result<CsvFileOnMemory> load(@NotBlank String uuid, CsvFileConfig config, @NotEmpty CsvHeader[] headers,
+            boolean hasHeader, @NotBlank String filepath, boolean reload);
 
     /**
      * 주어진 개수만큼 데이터를 제공한다. <br>
@@ -167,9 +165,8 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 15.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<ManagedCsvFile> read(@NotEmpty String uuid, @Min(1) Integer lineNumber, @Min(1) Integer count);
+    public Result<ManagedCsvFile> read(@NotBlank String uuid, @Min(1) Integer lineNumber, @Min(1) Integer count);
 
     /**
      * 메모리 적재 중인 CSV 파일을 제거한다. <br>
@@ -186,9 +183,8 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 15.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<Boolean> release(@NotEmpty String uuid);
+    public Result<Boolean> release(@NotBlank String uuid);
 
     /**
      * CSV 파일을 메모리로 재적재한다.<br>
@@ -207,9 +203,8 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 17.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<CsvFileOnMemory> reload(@NotEmpty String uuid, @NotEmpty String filepath);
+    public Result<CsvFileOnMemory> reload(@NotBlank String uuid, @NotBlank String filepath);
 
     /**
      * CSV 파일 데이터를 요청한만큼 제공한다. <br>
@@ -230,9 +225,8 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 13.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<CsvFileSampling> sample(@NotNull CsvFileConfig config, @NotNull String filepath, int count);
+    public Result<CsvFileSampling> sample(CsvFileConfig config, @NotBlank String filepath, int count);
 
     /**
      * 
@@ -254,9 +248,9 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 16.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<ManagedCsvFile> search(@NotEmpty String uuid, List<ColumnCondition> conditions, @NotNull Pageable pageable);
+    public Result<ManagedCsvFile> search(@NotBlank String uuid, List<ColumnCondition> conditions,
+            @NotNull Pageable pageable);
 
     /**
      * 주어진 줄 번호 데이터를 변경한다. <br>
@@ -277,9 +271,8 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 15.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<Boolean> update(@NotEmpty String uuid, @Min(1) int lineNumber, @NotEmpty Object[] data);
+    public Result<Boolean> update(@NotBlank String uuid, @Min(1) int lineNumber, @NotEmpty Object[] data);
 
     /**
      * 파일로 저장한다. <br>
@@ -298,7 +291,6 @@ public interface ICsvService {
      * @return
      *
      * @since 2021. 8. 16.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    public Result<Boolean> write(@NotEmpty String uuid, String filepath);
+    public Result<Boolean> write(@NotBlank String uuid, @NotBlank String filepath);
 }

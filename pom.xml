@@ -5,11 +5,10 @@
   <parent>
     <groupId>io.github.open-commons</groupId>
     <artifactId>open-commons-spring-web-dependencies</artifactId>
-    <version>0.8.0-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <artifactId>open-commons-spring-csv</artifactId>
-  <version>0.3.0-SNAPSHOT</version>
   <name>Open Commons for CSV</name>
   <description>Open Commos for CSV file, related services.</description>
   <url>https://github.com/open-commons/open-commons-spring-csv</url>
@@ -40,21 +39,7 @@
   </developers>
 
   <properties>
-    <!-- >>> begin: plugin dependencies -->
     <build.finalName>open-commons-spring-csv-${project.version}</build.finalName>
-
-    <encoding>UTF-8</encoding>
-    <java.version>1.8</java.version>
-
-    <compile.encoding>UTF-8</compile.encoding>
-    <compile.source.version>1.8</compile.source.version>
-    <compile.target.version>1.8</compile.target.version>
-    <!-- >>> end: plugin dependencies -->
-
-    <!-- >>> begin: dependencies -->
-    <spring-data-commons.version>[2.5.2,2.7.18]</spring-data-commons.version>
-    <open-commons-spring-web.version>0.8.0-SNAPSHOT</open-commons-spring-web.version>
-    <!-- <<< end: dependencies -->
   </properties>
 
   <distributionManagement>
@@ -97,6 +82,31 @@
   </pluginRepositories>
 
   <dependencies>
+
+    <!-- ********************** -->
+    <!-- >>> begin: logging -->
+    <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+    <!-- for llog4j-2.x: making all asynchronous loggers -->
+    <dependency>
+      <groupId>com.lmax</groupId>
+      <artifactId>disruptor</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j2-impl</artifactId>
+    </dependency>
+    <!-- <<< end: logging -->
+    <!-- ********************** -->
+
     <!-- ************** -->
     <!-- begin: Pagination -->
     <!--
@@ -109,11 +119,42 @@
     <!-- ************** -->
 
     <!-- ************** -->
+    <!-- >>> begin: Validation -->
+    <!--
+      https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+    <!-- <<< end: Validation -->
+    <!-- ************** -->
+
+    <!-- ************** -->
+    <!-- >>> begin: Annotation -->
+    <!-- Source: https://mvnrepository.com/artifact/org.jspecify/jspecify -->
+    <dependency>
+      <groupId>org.jspecify</groupId>
+      <artifactId>jspecify</artifactId>
+    </dependency>
+    <!--
+      https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
+    <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>      
+    </dependency>
+    <!-- <<< end: Annotation -->
+    <!-- ************** -->
+
+
+    <!-- ************** -->
     <!-- begin: open.commons -->
     <dependency>
       <groupId>io.github.open-commons</groupId>
+      <artifactId>open-commons-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.github.open-commons</groupId>
       <artifactId>open-commons-spring-web</artifactId>
-      <version>${open-commons-spring-web.version}</version>
       <exclusions>
         <exclusion>
           <groupId>io.github.open-commons</groupId>
@@ -123,24 +164,6 @@
     </dependency>
     <!-- end: open.commons -->
     <!-- ************** -->
-
-    <!-- ************** -->
-    <!-- >>> begin: Validation -->
-    <!--
-    https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
-    <dependency>
-      <groupId>jakarta.validation</groupId>
-      <artifactId>jakarta.validation-api</artifactId>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 -->
-    <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>jsr305</artifactId>
-    </dependency>
-    <!-- <<< end: Validation -->
-    <!-- ************** -->
-
-
   </dependencies>
 
   <build>
@@ -168,7 +191,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <encoding>${compile.encoding}</encoding>
+          <encoding>${encoding}</encoding>
           <source>${compile.source.version}</source>
           <target>${compile.target.version}</target>
         </configuration>
@@ -178,70 +201,23 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <configuration>
-          <encoding>UTF-8</encoding>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <!-- <<< end: source -->
       <!-- >>> begin: javadoc -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <goal>deploy</goal>
-          <show>private</show>
-          <nohelp>true</nohelp>
-          <additionalOptions>
-            <additionalOption>-Xdoclint:none</additionalOption>
-          </additionalOptions>
-          <charset>${encoding}</charset>
-          <docencoding>${encoding}</docencoding>
-          <encoding>${encoding}</encoding>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <!-- <<< end: javadoc -->
       <!-- Maven Central Deployment plugin -->
       <plugin>
         <groupId>org.sonatype.central</groupId>
         <artifactId>central-publishing-maven-plugin</artifactId>
-        <version>0.7.0</version>
-        <extensions>true</extensions>
-        <configuration>
-          <publishingServerId>maven-central</publishingServerId>
-          <!-- autoPublish>true</autoPublish>
-             		<waitUntil>published</waitUntil -->
-        </configuration>
       </plugin>
       <!-- GPG signature plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

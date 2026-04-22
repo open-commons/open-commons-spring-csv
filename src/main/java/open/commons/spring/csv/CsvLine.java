@@ -28,7 +28,9 @@ package open.commons.spring.csv;
 
 import java.util.Arrays;
 
-import javax.validation.constraints.Min;
+import jakarta.validation.constraints.Min;
+
+import org.jspecify.annotations.Nullable;
 
 /**
  * CSV 파일 줄 데이터
@@ -60,7 +62,6 @@ public class CsvLine {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public CsvLine(@Min(1) Integer lineNumber) {
         this.lineNumber = lineNumber;
@@ -80,7 +81,6 @@ public class CsvLine {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #data
      */
@@ -103,7 +103,6 @@ public class CsvLine {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lineNumber
      */
@@ -127,11 +126,10 @@ public class CsvLine {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #data
      */
-    public void setData(Object[] data) {
+    public void setData(Object @Nullable [] data) {
         this.data = data;
     }
 
@@ -150,7 +148,6 @@ public class CsvLine {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lineNumber
      */
@@ -162,7 +159,6 @@ public class CsvLine {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

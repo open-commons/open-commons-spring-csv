@@ -30,9 +30,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ExceptionUtils;
 
 /**
@@ -70,9 +71,11 @@ public class CsvLines {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public CsvLines(@NotNull @NotEmpty CsvHeader[] headers) {
+    public CsvLines(@NotEmpty CsvHeader[] headers) {
+        AssertUtils2.notEmpty((Object[]) headers);
+        
+        
         this.headers = headers;
         this.dataLength = headers.length;
     }
@@ -94,7 +97,6 @@ public class CsvLines {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void addData(CsvLine line) throws IllegalArgumentException {
         if (line == null || line.getData() == null) {
@@ -102,7 +104,8 @@ public class CsvLines {
         }
 
         if (this.dataLength != line.getData().length) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "데이터 길이가 올바르지 않습니다. 예상=%,d, 입력=%,d", this.dataLength, line.getData().length);
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "데이터 길이가 올바르지 않습니다. 예상=%,d, 입력=%,d",
+                    this.dataLength, line.getData().length);
         }
 
         this.lines.add(line);
@@ -122,7 +125,6 @@ public class CsvLines {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #dataLength
      */
@@ -145,7 +147,6 @@ public class CsvLines {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #headers
      */
@@ -168,7 +169,6 @@ public class CsvLines {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lines
      */
@@ -191,7 +191,6 @@ public class CsvLines {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #totalSize
      */
@@ -215,7 +214,6 @@ public class CsvLines {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #lines
      */
@@ -238,7 +236,6 @@ public class CsvLines {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #totalSize
      */
@@ -250,7 +247,6 @@ public class CsvLines {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

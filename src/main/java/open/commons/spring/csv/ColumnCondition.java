@@ -26,8 +26,10 @@
 
 package open.commons.spring.csv;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * 컬럼을 비교하기 위한 클래스.<br>
@@ -62,10 +64,8 @@ public class ColumnCondition {
      * 2021. 8. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ColumnCondition() {
     }
@@ -84,7 +84,6 @@ public class ColumnCondition {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #data
      */
@@ -107,7 +106,6 @@ public class ColumnCondition {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #index
      */
@@ -130,7 +128,6 @@ public class ColumnCondition {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #op
      */
@@ -154,11 +151,12 @@ public class ColumnCondition {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #data
      */
     public void setData(Object data) {
+        AssertUtils2.notNull(data);
+
         this.data = data;
     }
 
@@ -177,7 +175,6 @@ public class ColumnCondition {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #index
      */
@@ -200,11 +197,12 @@ public class ColumnCondition {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see #op
      */
     public void setOp(ColumnOp op) {
+        AssertUtils2.notNull(op);
+
         this.op = op;
     }
 
@@ -212,7 +210,6 @@ public class ColumnCondition {
      *
      * @since 2021. 8. 10.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

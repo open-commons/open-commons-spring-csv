@@ -27,6 +27,8 @@
 package open.commons.spring.csv.service.impl;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -39,9 +41,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,6 +59,8 @@ import open.commons.core.Result;
 import open.commons.core.concurrent.Mutex;
 import open.commons.core.csv.CsvFileConfig;
 import open.commons.core.test.StopWatch;
+import open.commons.core.utils.AssertUtils2;
+import open.commons.core.utils.CsvUtils;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.core.utils.IOUtils;
 import open.commons.core.utils.NumberUtils;
@@ -71,10 +76,10 @@ import open.commons.spring.csv.service.ICsvService;
 import open.commons.spring.csv.service.PositionDir;
 import open.commons.spring.web.mvc.IAsyncJobHandler;
 import open.commons.spring.web.mvc.service.AbstractGenericService;
-import open.commons.spring.web.servlet.BadRequestException;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.BadRequestException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 
-import au.com.bytecode.opencsv.CSVReader;
+import com.opencsv.CSVReader;
 
 /**
  * CSV 파일을 처리하는 기능을 제공하는 클래스.<br>
@@ -181,11 +186,13 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
                     uv = 60 * 60 * 1000;
                     break;
                 default:
-                    throw ExceptionUtils.newException(IllegalArgumentException.class, "CSV 파일 TTL(Time To Live) 시간설정이 올바르지 않습니다. 정규식=%s, 입력=%s", ttl);
+                    throw ExceptionUtils.newException(IllegalArgumentException.class,
+                            "CSV 파일 TTL(Time To Live) 시간설정이 올바르지 않습니다. 정규식=%s, 입력=%s", ttl);
             }
             this.ttl = n * uv;
         } else {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "CSV 파일 TTL(Time To Live) 시간설정이 올바르지 않습니다. 정규식=%s, 입력=%s", ttl);
+            throw ExceptionUtils.newException(IllegalArgumentException.class,
+                    "CSV 파일 TTL(Time To Live) 시간설정이 올바르지 않습니다. 정규식=%s, 입력=%s", ttl);
         }
     }
 
@@ -196,12 +203,13 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 16.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.csv.service.ICsvService#delete(java.lang.String, int)
      */
     @Override
-    public Result<Boolean> delete(@NotEmpty String uuid, @Min(1) int lineNumber) {
+    public Result<Boolean> delete(@NotBlank String uuid, @Min(1) int lineNumber) {
+        AssertUtils2.notBlank(uuid);
+
         return execute(() -> {
             MemorizedCsvFile csvfile = null;
             synchronized (MUTEX_CSV_FILE) {
@@ -214,7 +222,6 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 12.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.mvc.IAsyncJobHandler#getAsyncManagerHolder()
      */
@@ -237,7 +244,6 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.csv.service.ICsvService#getManagedFiles()
      */
@@ -251,13 +257,16 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 16.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.csv.service.ICsvService#insert(java.lang.String, int,
      *      open.commons.spring.csv.service.PositionDir, java.lang.Object[])
      */
     @Override
-    public Result<Boolean> insert(@NotEmpty String uuid, @Min(1) int lineNumber, @NotNull PositionDir position, @NotEmpty Object[] data) {
+    public Result<Boolean> insert(@NotBlank String uuid, @Min(1) int lineNumber, PositionDir position,
+            @NotEmpty Object[] data) {
+        AssertUtils2.notNull(position);
+        AssertUtils2.notEmpty(data);
+
         return execute(() -> {
             MemorizedCsvFile csvfile = null;
             synchronized (MUTEX_CSV_FILE) {
@@ -270,14 +279,16 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 12.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.spring.csv.service.ICsvService#load(String, open.commons.csv.CsvFileConfig, CsvHeader[],
-     *      boolean, java.lang.String, boolean)
+     * @see open.commons.spring.csv.service.ICsvService#load(String, open.commons.csv.CsvFileConfig,
+     *      CsvHeader[], boolean, java.lang.String, boolean)
      */
     @Override
-    public Result<CsvFileOnMemory> load(@NotEmpty String uuid, @NotNull CsvFileConfig config, @NotEmpty CsvHeader[] headers, boolean hasHeader, @NotNull String filepath,
-            boolean reload) {
+    public Result<CsvFileOnMemory> load(@NotBlank String uuid, CsvFileConfig config, @NotEmpty CsvHeader[] headers,
+            boolean hasHeader, @NotBlank String filepath, boolean reload) {
+        AssertUtils2.notBlanks(uuid, filepath);
+        AssertUtils2.notEmpty((Object[]) headers);
+
         // #0. 파일 중복 적재 요청 검증
         validateCsvFile(uuid, filepath, reload);
 
@@ -304,7 +315,8 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
             }
 
             watch.stop();
-            logger.info("[적재완료] 데이터개수: {}, 파일: {}, 경과시간: {}", NumberUtils.INT_TO_STR.apply(lineCount), filepath, watch.getAsPretty());
+            logger.info("[적재완료] 데이터개수: {}, 파일: {}, 경과시간: {}", NumberUtils.INT_TO_STR.apply(lineCount), filepath,
+                    watch.getAsPretty());
 
             // #2. 메모리 적재 등록
             Result<Boolean> resultRegistered = registerManagedCsvFile(uuid, filepath, managedCsvFile, reload);
@@ -328,12 +340,13 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.spring.csv.service.ICsvService#read(java.lang.String, java.lang.Integer, java.lang.Integer)
+     * @see open.commons.spring.csv.service.ICsvService#read(java.lang.String, java.lang.Integer,
+     *      java.lang.Integer)
      */
     @Override
-    public Result<ManagedCsvFile> read(@NotEmpty String uuid, @Min(1) Integer lineNumber, @Min(1) Integer count) {
+    public Result<ManagedCsvFile> read(@NotBlank String uuid, @Min(1) Integer lineNumber, @Min(1) Integer count) {
+        AssertUtils2.notBlank(uuid);
 
         return execute(() -> {
             MemorizedCsvFile csvfile = null;
@@ -350,24 +363,26 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.csv.service.ICsvService#release(java.lang.String)
      */
     @Override
-    public Result<Boolean> release(@NotEmpty String uuid) {
+    public Result<Boolean> release(@NotBlank String uuid) {
+        AssertUtils2.notBlank(uuid);
+
         return unregisterManagedCsvFile(uuid);
     }
 
     /**
      * @since 2021. 8. 17.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.csv.service.ICsvService#reload(java.lang.String, String)
      */
     @Override
-    public Result<CsvFileOnMemory> reload(@NotEmpty String uuid, String filepath) {
+    public Result<CsvFileOnMemory> reload(@NotBlank String uuid, @NotBlank String filepath) {
+        AssertUtils2.notBlanks(uuid, filepath);
+
         return execute(() -> {
             MemorizedCsvFile csvfile = null;
             synchronized (MUTEX_CSV_FILE) {
@@ -375,7 +390,8 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
             }
 
             if (!csvfile.getFilepath().equals(filepath)) {
-                throw ExceptionUtils.newException(BadRequestException.class, "기존 파일과 요청한 파일명이 일치하지 않습니다. 기존=%s, 입력=%s", csvfile.getFilepath(), filepath);
+                throw ExceptionUtils.newException(BadRequestException.class, "기존 파일과 요청한 파일명이 일치하지 않습니다. 기존=%s, 입력=%s",
+                        csvfile.getFilepath(), filepath);
             }
 
             return load(uuid, csvfile.getCsvFileConfig(), csvfile.getHeaders(), csvfile.getHasHeader(), filepath, true);
@@ -385,12 +401,14 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
-     * @see open.commons.spring.csv.service.ICsvService#sample(open.commons.csv.CsvFileConfig, java.lang.String, int)
+     * @see open.commons.spring.csv.service.ICsvService#sample(open.commons.csv.CsvFileConfig,
+     *      java.lang.String, int)
      */
     @Override
-    public Result<CsvFileSampling> sample(@NotNull CsvFileConfig config, @NotNull String filepath, int count) {
+    public Result<CsvFileSampling> sample(@NotNull CsvFileConfig config, @NotBlank String filepath, int count) {
+        AssertUtils2.notNull(config);
+        AssertUtils2.notBlank(filepath);
 
         final int MAX_READ_COUNT = count < 0 ? Integer.MAX_VALUE : count;
 
@@ -446,13 +464,15 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 16.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.csv.service.ICsvService#search(java.lang.String, java.util.List,
      *      org.springframework.data.domain.Pageable)
      */
     @Override
-    public Result<ManagedCsvFile> search(@NotEmpty String uuid, List<ColumnCondition> conditions, @NotNull Pageable pageable) {
+    public Result<ManagedCsvFile> search(@NotBlank String uuid, List<ColumnCondition> conditions,
+            @NotNull Pageable pageable) {
+        AssertUtils2.notBlank(uuid);
+        AssertUtils2.notNull(pageable);
 
         return execute(() -> {
             MemorizedCsvFile csvfile = null;
@@ -467,7 +487,8 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
                 Iterator<Order> itr = sort.iterator();
                 while (itr.hasNext()) {
                     Order order = itr.next();
-                    clmnSort = new ColumnSort(Integer.parseInt(order.getProperty()) - 1, Direction.ASC.equals(order.getDirection()) ? ColumnDirection.ASC : ColumnDirection.DESC);
+                    clmnSort = new ColumnSort(Integer.parseInt(order.getProperty()) - 1,
+                            Direction.ASC.equals(order.getDirection()) ? ColumnDirection.ASC : ColumnDirection.DESC);
                     break;
                 }
             }
@@ -482,12 +503,12 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.csv.service.ICsvService#update(java.lang.String, int, Object[])
      */
     @Override
-    public Result<Boolean> update(@NotEmpty String uuid, @Min(1) int lineNumber, @NotEmpty Object[] data) {
+    public Result<Boolean> update(@NotBlank String uuid, @Min(1) int lineNumber, @NotEmpty Object[] data) {
+        AssertUtils2.notBlank(uuid);
 
         return execute(() -> {
             MemorizedCsvFile csvfile = null;
@@ -508,10 +529,8 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      * 2021. 8. 15.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
-     *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @Scheduled(cron = "${application.csv.ttl.cron}")
     public void validateManagedCsvFilesTTL() {
@@ -520,13 +539,14 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
             for (Entry<String, MemorizedCsvFile> entry : MANAGED_CSV_FILES.entrySet()) {
                 csvfile = entry.getValue();
 
-                logger.debug("[validated] '{}'.accessed={}, release={}", csvfile.getFilepath(), DATE_FORMAT.format(new Date(csvfile.getAccessed())),
+                logger.debug("[validated] '{}'.accessed={}, release={}", csvfile.getFilepath(),
+                        DATE_FORMAT.format(new Date(csvfile.getAccessed())),
                         DATE_FORMAT.format(new Date(createReleasedTime(csvfile))));
 
                 if (csvfile.afterAccessed() > this.ttl) {
                     MANAGED_CSV_FILES.remove(entry.getKey());
-                    logger.info("'{}' 파일이 TTL 초과로 제거되었습니다. 최종접근시간={}, 경과시간={}ms", csvfile.getFilepath(), DATE_FORMAT.format(new Date(csvfile.getAccessed())),
-                            csvfile.afterAccessed());
+                    logger.info("'{}' 파일이 TTL 초과로 제거되었습니다. 최종접근시간={}, 경과시간={}ms", csvfile.getFilepath(),
+                            DATE_FORMAT.format(new Date(csvfile.getAccessed())), csvfile.afterAccessed());
                 }
             }
         }
@@ -535,12 +555,13 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
     /**
      * @since 2021. 8. 16.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.csv.service.ICsvService#write(java.lang.String, java.lang.String)
      */
     @Override
-    public Result<Boolean> write(@NotEmpty String uuid, String filepath) {
+    public Result<Boolean> write(@NotBlank String uuid, @NotBlank String filepath) {
+        AssertUtils2.notBlanks(uuid, filepath);
+
         return execute(() -> {
             MemorizedCsvFile csvfile = null;
             synchronized (MUTEX_CSV_FILE) {
@@ -550,18 +571,20 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
         }, "파일 저장");
     }
 
-    private static CSVReader createCSVReader(CsvFileConfig config, String filepath) {
+    private static CSVReader createCSVReader(CsvFileConfig config, String filepath) throws IOException {
         return createCSVReader(config, filepath, -1);
     }
 
-    private static CSVReader createCSVReader(CsvFileConfig config, String filepath, int skip) {
-        return new CSVReader(IOUtils.getReader(new File(filepath), config.getCharsetName()) //
-                , config.getSeparator() //
-                , config.getQuotechar() //
-                , config.getEscape() //
-                , skip < 0 ? config.getSkip() : skip //
-                , config.isStrictQuotes() //
-                , config.isIgnoreLeadingWhiteSpace());
+    private static CSVReader createCSVReader(CsvFileConfig config, String filepath, int skip) throws IOException {
+
+        Reader reader = IOUtils.getReader(new File(filepath), config.getCharset());
+
+        CsvFileConfig newCfg = config.clone();
+        if (skip >= 0) {
+            newCfg.setSkip(skip);
+        }
+
+        return CsvUtils.newCSVReader(reader, config);
     }
 
     /**
@@ -586,9 +609,9 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    private static Result<Boolean> registerManagedCsvFile(String uuid, String filepath, MemorizedCsvFile managedCsvFile, boolean reload) {
+    private static Result<Boolean> registerManagedCsvFile(String uuid, String filepath, MemorizedCsvFile managedCsvFile,
+            boolean reload) {
         try {
             synchronized (MUTEX_CSV_FILE) {
                 if (MANAGED_CSV_FILES.containsKey(uuid) && !reload) {
@@ -624,7 +647,6 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static Result<Boolean> unregisterManagedCsvFile(String uuid) {
         try {
@@ -666,7 +688,6 @@ public class CsvService extends AbstractGenericService implements ICsvService, I
      *            다시읽기 여부
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static void validateCsvFile(String uuid, String filepath, boolean reload) {
         synchronized (MUTEX_CSV_FILE) {

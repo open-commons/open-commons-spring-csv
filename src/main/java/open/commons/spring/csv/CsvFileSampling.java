@@ -31,9 +31,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
-import javax.validation.constraints.NotNull;
-
 import open.commons.core.utils.ArrayUtils;
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * CSV 파일의 일부만 제공하는 클래스.
@@ -62,9 +61,8 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * 
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public CsvFileSampling(@NotNull String filepath) {
+    public CsvFileSampling(String filepath) {
         super(filepath);
     }
 
@@ -83,12 +81,9 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * @since 2021. 8. 13.
      * 
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public void addData(Object[] data) {
-        if (data == null) {
-            return;
-        }
+        AssertUtils2.notNulls(data);
 
         Object[] updated = updateColumnDataType(data);
         this.data.add(updated);
@@ -133,6 +128,8 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      * @see #data
      */
     public void setData(List<Object[]> data) {
+        AssertUtils2.notNull(data);
+
         this.data.clear();
         if (data != null) {
             for (Object[] d : data) {
@@ -144,7 +141,6 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
     /**
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */
@@ -175,7 +171,6 @@ public class CsvFileSampling extends AbstractCsvFileLoad {
      *
      * @since 2021. 8. 15.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private Object[] updateColumnDataType(Object[] data) {
 

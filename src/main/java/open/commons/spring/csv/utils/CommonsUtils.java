@@ -33,8 +33,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import javax.validation.constraints.NotNull;
-
+import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.csv.CsvHeader;
 
 /**
@@ -64,7 +63,6 @@ public class CommonsUtils {
      *
      * @since 2021. 8. 12.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public static CsvHeader[] csvHeaderArray(int count) {
         return count < 1 //
@@ -88,7 +86,6 @@ public class CommonsUtils {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public static List<CsvHeader> csvHeaderList(int count) {
         return Arrays.asList(csvHeaderArray(count));
@@ -109,10 +106,11 @@ public class CommonsUtils {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public static CsvHeader[] csvHeaders(@NotNull List<String> headers) {
-        return csvHeaders(headers.toArray(new String[0]));
+    public static CsvHeader[] csvHeaders(List<String> headers) {
+        AssertUtils2.notNull(headers);
+
+        return headers.stream().map(hd -> new CsvHeader(hd)).toArray(CsvHeader[]::new);
     }
 
     /**
@@ -130,10 +128,11 @@ public class CommonsUtils {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public static CsvHeader[] csvHeaders(@NotNull String... headers) {
-        return Arrays.stream(headers).map(hd -> new CsvHeader(hd)).toArray(CsvHeader[]::new);
+    public static CsvHeader[] csvHeaders(String... headers) {
+        AssertUtils2.notNulls((Object[]) headers);
+
+        return csvHeaders(Arrays.asList(headers));
     }
 
     /**
@@ -152,7 +151,6 @@ public class CommonsUtils {
      *
      * @since 2021. 8. 11.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static List<String> intToStrList(int count) {
         return count < 1 //
@@ -174,7 +172,6 @@ public class CommonsUtils {
      *
      * @since 2021. 8. 13.
      * @version 0.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * @see UUID
      */
     public static String uuid() {
