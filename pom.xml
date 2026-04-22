@@ -9,7 +9,7 @@
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <artifactId>open-commons-spring-csv</artifactId>
-  <version>0.3.0-SNAPSHOT</version>
+  <version>0.3.0</version>
   <name>Open Commons for CSV</name>
   <description>Open Commos for CSV file, related services.</description>
   <url>https://github.com/open-commons/open-commons-spring-csv</url>
